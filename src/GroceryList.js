@@ -30,8 +30,12 @@ class GroceryList extends React.Component {
       list.push(category);
     }
 
+    const style = {
+      gridRow: 3
+    };
+
     return (
-      <div className="grocery-list" style={{paddingTop:"115px"}}>
+      <div className="grocery-list" style={style}>
         {list}
       </div>
     );

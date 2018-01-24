@@ -11,17 +11,14 @@ class Footer extends React.Component {
     }
   }
   render() {
+    const style = {
+      gridRow: 4
+    }
+
     return (
-      <div className="footer">
-      
-      </div>
-      // <Grid fluid={true}>
-      //   <Row>
-      //     <p style={{textAlign: "center"}}>
-      //       © {this.state.year}: Grayson Ricketts
-      //     </p>
-      //   </Row>
-      // </Grid>
+      <footer className="footer" style={style}>
+        © {this.state.year}: Grayson Ricketts
+      </footer>
     );
   }
 }

@@ -12,8 +12,12 @@ class Search extends React.Component {
   }
 
   render() {
+    const style = {
+      gridRow: 2
+    }
+
     return (
-      <form>
+      <form style={style}>
         <FormGroup bsSize="sm">
           <InputGroup>
             <FormControl type="text" placeholder={this.state.placeholderText}/>

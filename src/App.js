@@ -1,23 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Footer from './Footer';
 import Header from './Header';
+import Search from './Search';
 import GroceryList from './GroceryList';
 
-import { Grid} from 'react-bootstrap'
-
-class App extends Component {
+class App extends React.Component {
   render() {
+    const style = {
+      display: 'grid'
+    }
+
     return (
-      <Grid>
+      <div className="wrapper" style={style}>
 
         <Header groceryListName="Grayson's List" />
+
+        <Search />
 
         <GroceryList />
 
         <Footer />
 
-      </Grid>
+      </div>
     );
   }
 }
