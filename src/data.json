@@ -1,0 +1,66 @@
+{
+  "items": [
+    {
+      "itemName": "lettuce",
+      "quantity": 8,
+      "size": "large",
+      "category": "produce",
+      "_id": 1
+    },
+    {
+      "itemName": "potatoes",
+      "quantity": 2,
+      "category": "produce",
+      "_id": 2
+    },
+    {
+      "itemName": "steak",
+      "quantity": 1,
+      "size": "thick",
+      "category": "meat",
+      "_id": 3
+    },
+    {
+      "itemName": "steak",
+      "quantity": 1,
+      "size": "thick",
+      "category": "meat",
+      "_id": 4
+    },
+    {
+      "itemName": "steak",
+      "quantity": 1,
+      "size": "thick",
+      "category": "meat",
+      "_id": 5
+    },
+    {
+      "itemName": "steak",
+      "quantity": 1,
+      "size": "thick",
+      "category": "meat",
+      "_id": 6
+    },
+    {
+      "itemName": "steak",
+      "quantity": 1,
+      "size": "thick",
+      "category": "meat",
+      "_id": 7
+    },
+    {
+      "itemName": "steak",
+      "quantity": 1,
+      "size": "thick",
+      "category": "meat",
+      "_id": 8
+    },
+    {
+      "itemName": "steak",
+      "quantity": 1,
+      "size": "thick",
+      "category": "meat",
+      "_id": 9
+    }
+  ]
+}
