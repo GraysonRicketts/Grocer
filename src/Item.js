@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Row, Col } from 'react-bootstrap'
-
 class Item extends React.Component {
   constructor(props) {
     super(props);
@@ -28,31 +26,50 @@ class Item extends React.Component {
     const quantity = this.props.quantity;
 
     const selected = this.state.selected;
-    const color = selected ? '#EEE' : '#FFF'
+    const color = selected ? '#EEE' : '#FFF';
     const textDecoration = selected ? 'line-through' : 'none';
 
-    const style = {
+    const flexContainerStyle = {
+      width: '100%',
       backgroundColor: color,
-      textDecoration
+      textDecoration,
+      display: 'flex',
+      flexWrap: 'nowrap',
+      alignItems: 'center'
+    };
+
+    const inline = {
+      display: 'inline-block',
+      height: '100%'
+    };
+
+
+    const left = {
+      flexShrink: 0,
+      flexGrow: 1
     }
 
     return (
-      <Row style={style}>
-        <Col xs={8}>
-          <Row>
+      <div style={flexContainerStyle}>
+
+        <div style={Object.assign({}, inline, left)}>
+          <div>
             {itemName}
-          </Row>
-          <Row>
+          </div>
+          <div>
             {size}
-          </Row>
-        </Col>
-        <Col xs={2}>
+          </div>
+        </div>
+        
+        <div style={inline}>
           {quantity}
-        </Col>
-        <Col>
+        </div>
+
+        <div style={inline}>
           <input type="checkbox" onClick={this.handleClick}/>
-        </Col>
-      </Row>
+        </div>
+
+      </div>
     );
   }
 }

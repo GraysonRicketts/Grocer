@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Row, Col } from 'react-bootstrap'
-
 import Item from './Item';
 
 class Category extends React.Component {
@@ -17,16 +15,19 @@ class Category extends React.Component {
 
     const categoryName = this.props.categoryName;
 
-    return (
-      <Row>
-        <Col>
-          <h4 className="row">
-            {categoryName}
-          </h4>
+    const style = {
+      width: '100%',
+      marginBottom: '45px'
+    };
 
-          {items}
-        </Col>
-      </Row>
+    return (
+      <div style={style}>
+        <h4 className="row" style={{width: '100%'}}>
+          {categoryName}
+        </h4>
+
+        {items}
+      </div>
     );
   }
 }

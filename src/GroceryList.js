@@ -31,7 +31,7 @@ class GroceryList extends React.Component {
     }
 
     const style = {
-      
+      width: '100%'
     };
 
     return (
