@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { form, FormGroup, FormControl, InputGroup } from 'react-bootstrap';
-
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -13,16 +11,15 @@ class Search extends React.Component {
 
   render() {
     const style = {
-      gridRow: 2
+      width: '100%',
+      marginTop: '25px',
+      borderStyle: 'solid',
+      borderWidth: '2px',
     }
 
     return (
       <form style={style}>
-        <FormGroup bsSize="sm">
-          <InputGroup>
-            <FormControl type="text" placeholder={this.state.placeholderText}/>
-          </InputGroup>
-        </FormGroup>
+        <input type="text" placeholder={this.state.placeholderText} size={44}/>
       </form>
     );
   }

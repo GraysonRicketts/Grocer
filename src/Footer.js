@@ -12,7 +12,11 @@ class Footer extends React.Component {
   }
   render() {
     const style = {
-      gridRow: 4
+      position: 'fixed',
+      left: 0,
+      bottom: 0,
+      width: '100%',
+      textAlign: 'center'
     }
 
     return (

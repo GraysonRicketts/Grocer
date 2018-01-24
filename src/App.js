@@ -6,15 +6,21 @@ import Search from './Search';
 import GroceryList from './GroceryList';
 
 class App extends React.Component {
-  render() {
-    const style = {
-      display: 'grid'
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      user: "Grayson"
     }
+  }
+
+  render() {
+    const groceryListName = `${this.state.user}'s List`
 
     return (
-      <div className="wrapper" style={style}>
+      <div className="wrapper">
 
-        <Header groceryListName="Grayson's List" />
+        <Header groceryListName={groceryListName} />
 
         <Search />
 
