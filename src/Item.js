@@ -36,32 +36,15 @@ class Item extends React.Component {
     const textDecoration = selected ? 'line-through' : 'none';
 
     const flexContainerStyle = {
-      width: '100%',
       backgroundColor,
       textDecoration,
-      display: 'flex',
-      flexWrap: 'nowrap',
-      alignItems: 'center',
-      margin: '5px 0',
-      padding: '4px 3px',
-      border: '1px solid' + this.lightGrey
+      borderColor: this.lightGrey
     };
-
-    const inline = {
-      display: 'inline-block',
-      height: '100%'
-    };
-
-
-    const left = {
-      flexShrink: 0,
-      flexGrow: 1
-    }
 
     return (
-      <div style={flexContainerStyle}>
+      <div className='item' style={flexContainerStyle}>
 
-        <div style={Object.assign({}, inline, left)}>
+        <div className='itemTextDiv'>
           <div>
             {itemName}
           </div>
@@ -70,11 +53,11 @@ class Item extends React.Component {
           </div>
         </div>
         
-        <div style={inline}>
+        <div className='quantity'>
           {quantity}
         </div>
 
-        <div style={inline}>
+        <div className='checkbox'>
           <input type="checkbox" onClick={this.handleClick}/>
         </div>
 

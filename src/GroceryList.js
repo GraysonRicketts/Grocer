@@ -30,12 +30,8 @@ class GroceryList extends React.Component {
       list.push(category);
     }
 
-    const style = {
-      width: '100%'
-    };
-
     return (
-      <div className="grocery-list" style={style}>
+      <div className="groceryList">
         {list}
       </div>
     );

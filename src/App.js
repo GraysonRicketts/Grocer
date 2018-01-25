@@ -18,14 +18,8 @@ class App extends React.Component {
   render() {
     const groceryListName = `${this.state.user}'s List`
 
-    const bodyStyle = {
-      height: '100%',
-      margin: 0,
-      padding: 0
-    }
-
     return (
-      <div className="wrapper" style={bodyStyle}>
+      <div className="wrapper">
 
         <Header groceryListName={groceryListName} />
 

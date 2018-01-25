@@ -4,62 +4,61 @@
       "itemName": "lettuce",
       "quantity": 8,
       "size": "large",
-      "category": "produce",
+      "category": "Produce",
       "_id": 1
     },
     {
       "itemName": "potatoes",
       "quantity": 2,
-      "category": "produce",
+      "category": "Produce",
       "_id": 2
     },
     {
-      "itemName": "steak",
+      "itemName": "super super super super super super super super super super super super long name",
       "quantity": 1,
-      "size": "thick",
-      "category": "meat",
+      "category": "Meat",
       "_id": 3
     },
     {
       "itemName": "steak",
       "quantity": 1,
-      "size": "thick",
-      "category": "meat",
+      "size": "8oz",
+      "category": "Meat",
       "_id": 4
     },
     {
       "itemName": "steak",
       "quantity": 1,
-      "size": "thick",
-      "category": "meat",
+      "size": "8oz",
+      "category": "Meat",
       "_id": 5
     },
     {
       "itemName": "steak",
       "quantity": 1,
-      "size": "thick",
-      "category": "meat",
+      "size": "8oz",
+      "category": "Meat",
       "_id": 6
     },
     {
       "itemName": "steak",
       "quantity": 1,
-      "size": "thick",
-      "category": "meat",
+      "size": "8oz",
+      "category": "Meat",
       "_id": 7
     },
     {
       "itemName": "steak",
       "quantity": 1,
-      "size": "thick",
-      "category": "meat",
+      "size": "8oz",
+      "category": "Meat",
       "_id": 8
     },
     {
-      "itemName": "steak",
-      "quantity": 1,
-      "size": "thick",
-      "category": "meat",
+      "itemName": "milk",
+      "quantity": 2,
+      "size": "1 Gallon",
+      "category": "Dairy",
       "_id": 9
     }
   ]

@@ -11,19 +11,12 @@ class Footer extends React.Component {
     }
   }
   render() {
-    const style = {
-      position: 'absolute',
-      right: 0,
-      left: 0,
-      bottom: 0,
-      padding: '1rem',
-      textAlign: 'center'
-    }
-
     return (
-      <footer className="footer" style={style}>
-        © {this.state.year}: Grayson Ricketts
-      </footer>
+      <div className="footer">
+        <footer>
+          © {this.state.year} Grayson Ricketts
+        </footer>
+      </div>
     );
   }
 }

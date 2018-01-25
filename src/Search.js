@@ -10,17 +10,12 @@ class Search extends React.Component {
   }
 
   render() {
-    const style = {
-      width: '100%',
-      marginTop: '30px',
-      borderStyle: 'solid',
-      borderWidth: '2px',
-    }
-
     return (
-      <form style={style}>
-        <input type="text" placeholder={this.state.placeholderText} size={44}/>
-      </form>
+      <div className="search">
+        <form>
+          <input type="text" placeholder={this.state.placeholderText}/>
+        </form>
+      </div>
     );
   }
 }
