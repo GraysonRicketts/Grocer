@@ -12,6 +12,12 @@ class Item extends React.Component {
 
     // This binding is necessary to make `this` work in the callback
     this.handleClick = this.handleClick.bind(this);
+
+    // Colors
+    this.lightestGrey = '#DDD'
+    this.lightGrey = '#EEE';
+    this.black = '#111';
+    this.white = '#FFF';
   }
 
   handleClick() {
@@ -26,16 +32,19 @@ class Item extends React.Component {
     const quantity = this.props.quantity;
 
     const selected = this.state.selected;
-    const color = selected ? '#EEE' : '#FFF';
+    const backgroundColor = selected ? this.lightestGrey : this.white;
     const textDecoration = selected ? 'line-through' : 'none';
 
     const flexContainerStyle = {
       width: '100%',
-      backgroundColor: color,
+      backgroundColor,
       textDecoration,
       display: 'flex',
       flexWrap: 'nowrap',
-      alignItems: 'center'
+      alignItems: 'center',
+      margin: '5px 0',
+      padding: '4px 3px',
+      border: '1px solid' + this.lightGrey
     };
 
     const inline = {

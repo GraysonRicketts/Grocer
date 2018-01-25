@@ -12,7 +12,7 @@ class Search extends React.Component {
   render() {
     const style = {
       width: '100%',
-      marginTop: '25px',
+      marginTop: '30px',
       borderStyle: 'solid',
       borderWidth: '2px',
     }

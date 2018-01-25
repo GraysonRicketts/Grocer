@@ -1,5 +1,6 @@
 import React from 'react';
 
+import './App.css';
 import Footer from './Footer';
 import Header from './Header';
 import Search from './Search';
@@ -17,8 +18,14 @@ class App extends React.Component {
   render() {
     const groceryListName = `${this.state.user}'s List`
 
+    const bodyStyle = {
+      height: '100%',
+      margin: 0,
+      padding: 0
+    }
+
     return (
-      <div className="wrapper">
+      <div className="wrapper" style={bodyStyle}>
 
         <Header groceryListName={groceryListName} />
 

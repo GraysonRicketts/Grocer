@@ -6,7 +6,8 @@ class Header extends React.Component {
       width: '100%',
       top: 0,
       left: 0,
-      position: 'fixed'
+      position: 'absolute',
+      padding: '10px'
     };
 
     return (

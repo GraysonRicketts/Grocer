@@ -15,14 +15,21 @@ class Category extends React.Component {
 
     const categoryName = this.props.categoryName;
 
-    const style = {
+    const categoryStyle = {
       width: '100%',
-      marginBottom: '45px'
+      marginTop: '20px',
+      marginBottom: '35px'
     };
 
+    const categoryNameStyle = {
+      width: '100%',
+      margin: 'auto',
+      fontWeight: 500
+    }
+
     return (
-      <div style={style}>
-        <h4 className="row" style={{width: '100%'}}>
+      <div style={categoryStyle}>
+        <h4 style={categoryNameStyle}>
           {categoryName}
         </h4>
 
