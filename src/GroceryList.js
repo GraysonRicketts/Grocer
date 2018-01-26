@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Search from './Search';
 import Category from './Category';
 import importedData from './data.json'
 
@@ -32,6 +33,8 @@ class GroceryList extends React.Component {
 
     return (
       <div className="groceryList">
+        <Search />
+
         {list}
       </div>
     );

@@ -23,8 +23,6 @@ class App extends React.Component {
 
         <Header groceryListName={groceryListName} />
 
-        <Search />
-
         <GroceryList />
 
         <Footer />

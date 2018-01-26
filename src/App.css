@@ -42,20 +42,22 @@ body {
   margin: 10px 0 35px 0;
 }
 
-.category > h4 {
+.category > h3 {
   margin: 0;
-  font-size: 1.2rem;
-  font-weight: 550;
+  font-size: 1.4rem;
+  font-weight: 300;
 }
 
 .item {
+  width: 100%;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   margin: 5px 0;
   padding: 4px 3px;
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
+  border-radius: 9px;
 }
 
 .item > div {
@@ -63,11 +65,26 @@ body {
 }
 
 .itemTextDiv {
-  flex: 1 1 auto;
+  flex: 1;
+  overflow: hidden;
+}
+
+.itemTextDiv > div > h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 550;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .quantity, .checkbox {
-  flex: 0 2 auto;
+  flex: 0;
+}
+
+.quantity {
+  margin: 0 8px 0 24px;
+  font-size: 1.3rem;
 }
 
 .footer {
@@ -76,6 +93,6 @@ body {
   left: 0;
   right: 0;
   text-align: center;
-  font-size: 1rem;
+  font-size: .75rem;
   padding: 8px 0;
 }

@@ -17,9 +17,9 @@ class Category extends React.Component {
 
     return (
       <div className='category'>
-        <h4>
+        <h3>
           {categoryName}
-        </h4>
+        </h3>
 
         {items}
       </div>

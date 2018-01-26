@@ -38,7 +38,7 @@ class Item extends React.Component {
     const flexContainerStyle = {
       backgroundColor,
       textDecoration,
-      borderColor: this.lightGrey
+      borderColor: this.lightestGrey
     };
 
     return (
@@ -46,7 +46,9 @@ class Item extends React.Component {
 
         <div className='itemTextDiv'>
           <div>
-            {itemName}
+            <h4>
+              {itemName}
+            </h4>
           </div>
           <div>
             {size}
