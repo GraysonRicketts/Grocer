@@ -27,18 +27,23 @@ class Item extends React.Component {
   }
 
   render() {
+    // Data
     const itemName = this.props.itemName;
     const size = this.props.size;
     const quantity = this.props.quantity;
 
+    // State
     const selected = this.state.selected;
+
+    // State specific styling
     const backgroundColor = selected ? this.lightestGrey : this.white;
     const textDecoration = selected ? 'line-through' : 'none';
+    const opacity = selected ? 0.5 : 1;
 
     const flexContainerStyle = {
       backgroundColor,
       textDecoration,
-      borderColor: this.lightestGrey
+      opacity
     };
 
     return (

@@ -58,6 +58,7 @@ body {
   border-width: 2px;
   border-style: solid;
   border-radius: 9px;
+  border-color: #DDD;
 }
 
 .item > div {
