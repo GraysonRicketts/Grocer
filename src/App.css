@@ -1,3 +1,8 @@
+:root {
+  --heavy-text: 550;
+  --med-heavy-text:450;
+}
+
 html {
   height: 100%;
   box-sizing: border-box;
@@ -73,7 +78,7 @@ body {
 .itemTextDiv > div > h4 {
   margin: 0;
   font-size: 1.2rem;
-  font-weight: 550;
+  font-weight: var(--heavy-text);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -86,6 +91,7 @@ body {
 .quantity {
   margin: 0 8px 0 24px;
   font-size: 1.3rem;
+  font-weight: var(--med-heavy-text);
 }
 
 .footer {

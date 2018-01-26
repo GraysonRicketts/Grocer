@@ -3,7 +3,6 @@ import React from 'react';
 import './App.css';
 import Footer from './Footer';
 import Header from './Header';
-import Search from './Search';
 import GroceryList from './GroceryList';
 
 class App extends React.Component {
