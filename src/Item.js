@@ -64,8 +64,8 @@ class Item extends React.Component {
           {quantity}
         </div>
 
-        <div className='checkbox'>
-          <input type="checkbox" onClick={this.handleClick}/>
+        <div className='check'>
+          <input type="checkbox" className="checkbox" onClick={this.handleClick}/>
         </div>
 
       </div>

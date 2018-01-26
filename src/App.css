@@ -1,6 +1,6 @@
 :root {
-  --heavy-text: 550;
-  --med-heavy-text:450;
+  --heavy-text: 600;
+  --med-light-text: 300;
 }
 
 html {
@@ -84,14 +84,43 @@ body {
   text-overflow: ellipsis;
 }
 
-.quantity, .checkbox {
+.quantity, .check {
   flex: 0;
+}
+
+.check {
+  flex-basis: auto;
+  margin: 0 10px 0 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.checkbox {
+  position: absolute;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 4px;
+  margin: 0;
+  opacity: 0;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.checkbox:checked {
+  content: 's';
+}
+
+.checkbox:focus {
+  outline: 1px solid #ddd
 }
 
 .quantity {
   margin: 0 8px 0 24px;
-  font-size: 1.3rem;
-  font-weight: var(--med-heavy-text);
+  font-size: 1.4rem;
+  font-weight: var(--med-light-text);
 }
 
 .footer {
