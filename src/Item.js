@@ -42,14 +42,13 @@ class Item extends React.Component {
 
     const flexContainerStyle = {
       backgroundColor,
-      textDecoration,
       opacity
     };
 
     return (
       <div className='item' style={flexContainerStyle}>
 
-        <div className='itemTextDiv'>
+        <div className='itemTextDiv' style={{textDecoration}}>
           <div>
             <h4>
               {itemName}
@@ -64,8 +63,11 @@ class Item extends React.Component {
           {quantity}
         </div>
 
-        <div className='check'>
-          <input type="checkbox" className="checkbox" onClick={this.handleClick}/>
+        <div className="activeIndicator">
+          <label className='check'>
+            <input type="checkbox" className="checkbox" onClick={this.handleClick}/>
+            <div className="box"></div>
+          </label>
         </div>
 
       </div>
