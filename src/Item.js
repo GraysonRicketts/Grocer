@@ -7,11 +7,13 @@ class Item extends React.Component {
     this.state = {
       active: false,
       color: '#FFF',
-      strikethrough: false
+      strikethrough: false,
+      showDetails: false
     }
 
     // This binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this);
+    this.handleCheckBoxClick = this.handleCheckBoxClick.bind(this);
+    this.showDetails = this.showDetails.bind(this);
 
     // Colors
     this.lightestGrey = '#DDD'
@@ -20,9 +22,15 @@ class Item extends React.Component {
     this.white = '#FFF';
   }
 
-  handleClick() {
-    this.setState(prevState => ({
+  handleCheckBoxClick() {
+    this.setState((prevState, props) => ({
       selected: !prevState.selected
+    }));
+  }
+
+  showDetails() {
+    this.setState((prevState, props) => ({
+      showDetails: !prevState.showDetails
     }));
   }
 
@@ -40,6 +48,7 @@ class Item extends React.Component {
     const textDecoration = selected ? 'line-through' : 'none';
     const opacity = selected ? 0.5 : 1;
     const noteDisplay = this.props.note ? 'inline-block' : 'none';
+    const detailsDisplay = this.state.showDetails ? 'block' : 'none';
 
     const flexContainerStyle = {
       backgroundColor,
@@ -47,32 +56,40 @@ class Item extends React.Component {
     };
 
     return (
-      <div className='item' style={flexContainerStyle}>
+      <div className='itemRow' style={flexContainerStyle}>
 
-        <div className='itemTextDiv' style={{textDecoration}}>
-          <div>
-            <h4>
-              {itemName}
-            </h4>
+        <div className="item">
+          <div className='itemTextDiv' style={{textDecoration}}
+          onClick={this.showDetails}>
+            <div>
+              <h4>
+                {itemName}
+              </h4>
+            </div>
+            <div>
+              {size}
+            </div>
           </div>
-          <div>
-            {size}
+
+          <div className="note" style={{ display: noteDisplay }}
+          onClick={this.showDetails}>
+            <i className="far fa-sticky-note"></i>
+          </div>
+
+          <div className='quantity'>
+            {quantity}
+          </div>
+
+          <div className="activeIndicator">
+            <label className='check'>
+              <input type="checkbox" className="checkbox" onClick={this.handleCheckBoxClick}/>
+              <div className="box"></div>
+            </label>
           </div>
         </div>
 
-        <div className="note" style={{ display: noteDisplay }}>
-          <i className="far fa-sticky-note"></i>
-        </div>
-
-        <div className='quantity'>
-          {quantity}
-        </div>
-
-        <div className="activeIndicator">
-          <label className='check'>
-            <input type="checkbox" className="checkbox" onClick={this.handleClick}/>
-            <div className="box"></div>
-          </label>
+        <div className="itemForm" style={{ display: detailsDisplay }}>
+          <p>oh shit, you can see me</p>
         </div>
 
       </div>
