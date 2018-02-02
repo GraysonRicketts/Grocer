@@ -39,6 +39,7 @@ class Item extends React.Component {
     const backgroundColor = selected ? this.lightestGrey : this.white;
     const textDecoration = selected ? 'line-through' : 'none';
     const opacity = selected ? 0.5 : 1;
+    const noteDisplay = this.props.note ? 'inline-block' : 'none';
 
     const flexContainerStyle = {
       backgroundColor,
@@ -58,7 +59,11 @@ class Item extends React.Component {
             {size}
           </div>
         </div>
-        
+
+        <div className="note" style={{ display: noteDisplay }}>
+          <i className="far fa-sticky-note"></i>
+        </div>
+
         <div className='quantity'>
           {quantity}
         </div>

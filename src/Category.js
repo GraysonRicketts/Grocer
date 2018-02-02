@@ -9,6 +9,7 @@ class Category extends React.Component {
         <Item itemName={item.itemName}
         size={item.size}
         quantity={item.quantity}
+        note={item.note}
         key={item._id}/>
       );
     });
