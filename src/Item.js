@@ -1,4 +1,5 @@
 import React from 'react';
+import ItemEditor from './ItemEditor';
 
 class Item extends React.Component {
   constructor(props) {
@@ -48,7 +49,17 @@ class Item extends React.Component {
     const textDecoration = selected ? 'line-through' : 'none';
     const opacity = selected ? 0.5 : 1;
     const noteDisplay = this.props.note ? 'inline-block' : 'none';
-    const detailsDisplay = this.state.showDetails ? 'block' : 'none';
+
+    let detailsDisplay = {
+      visibility: 'hidden',
+      opacity: 0
+    };
+    if (this.state.showDetails) {
+      detailsDisplay = {
+        visibility: 'visible',
+        opacity: 1
+      };
+    }
 
     const flexContainerStyle = {
       backgroundColor,
@@ -88,8 +99,8 @@ class Item extends React.Component {
           </div>
         </div>
 
-        <div className="itemForm" style={{ display: detailsDisplay }}>
-          <p>oh shit, you can see me</p>
+        <div className="itemForm" style={detailsDisplay}>
+          { this.state.showDetails ? <ItemEditor /> : null }
         </div>
 
       </div>

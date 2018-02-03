@@ -105,6 +105,32 @@ body {
   font-weight: var(--med-light-text);
 }
 
+.itemForm {
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.itemEditor {
+  margin: 20px 10%;
+  font-weight: var(--heavy-text);
+}
+
+.itemEditor div {
+  margin: 4px 0;
+}
+
+.itemEditor label {
+  display: inline-block;
+  min-width: 30%;
+  text-align: right;
+  margin: 0 5% 0 0;
+}
+
+.itemEditor input {
+  width: 65%;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+}
+
 /* 
  *  Check box
  */
