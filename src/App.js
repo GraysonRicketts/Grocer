@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <div className="wrapper">
 
-        <Header groceryListName={groceryListName} />
+        <Header title={groceryListName} />
 
         <GroceryList />
 
