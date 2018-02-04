@@ -1,0 +1,49 @@
+:root {
+  --heavy-text: 600;
+  --med-light-text: 300;
+  --border-color: #999999;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 0;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.wraper {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  padding: 10px;
+}
+
+/* 
+ *  Footer
+ */
+
+ .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: .75rem;
+  padding: 8px 0;
+}
