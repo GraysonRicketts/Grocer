@@ -15,7 +15,7 @@ class Signup extends React.Component {
 
         <Header title={'Sign up'}/>
 
-          <div>
+          <div className='signup'>
             <div>
               <label>Email</label>
               <input type="text"/>
@@ -31,13 +31,11 @@ class Signup extends React.Component {
               <input type="password"/>
             </div>
 
-            <div>
-              <input type="button" value="Facebook"/>
-              <input type="button" value="Google"/>
-            </div>
-
-            <div>
+            <div class="signupSubmit">
               <input type="submit" value="Sign up"/>
+              <a href="#">
+                <p>Already have an account? Login</p>
+              </a>
             </div>
           </div>
 

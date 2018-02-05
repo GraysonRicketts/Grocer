@@ -47,3 +47,63 @@ body {
   font-size: .75rem;
   padding: 8px 0;
 }
+
+input {
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.signup {
+  margin: 30px 10%;
+}
+
+.signup div {
+  margin: 0 0 20px 0;
+}
+
+.signup label {
+  display: block;
+}
+
+.signup input {
+  width: 100%;
+}
+
+.loginButton {
+  margin: 10px 0 0 0;
+  width: 100%;
+}
+
+.loginButton input {
+  margin-bottom: 0px;
+  font-weight: 600;
+  font-size: 1.4rem;
+  border: 0px;
+  background-color: blue;
+  color: white;
+}
+
+.create {
+  margin: 0;
+  text-align: center;
+}
+
+.oauth input {
+  width: 8rem;
+  margin: 5px 0;
+  display: block;
+  font-size: 1.1rem;
+  background-color: white;
+}
+
+.signupSubmit input {
+  background-color: green;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: white;
+}
+
+.signupSubmit p {
+  text-align: center;
+}
