@@ -15,18 +15,19 @@ class Login extends React.Component {
 
         <Header title={'Login'}/>
 
-          <div>
+          <div className='login'>
             <form>
 
-              <div>
-                <label>Email</label>
-                <input type="text"/>
-              </div>
+              <div className="standardInput">
+                <div>
+                  <label>Email</label>
+                  <input type="text"/>
+                </div>
 
-              <div>
-                <label>Password</label>
-                <input type="password"/>
-              </div>
+                <div>
+                  <label>Password</label>
+                  <input type="password"/>
+                </div>
 
                 <div className='loginButton'>
                   <input type="submit" value="Login"/>
@@ -40,8 +41,9 @@ class Login extends React.Component {
 
               <div className="oauth">
                 <input type="button" value="Google"/>
-              <input type="button" value="Facebook"/>
-              <input type="button" value="Google"/>
+                <input type="button" value="Facebook"/>
+              </div>
+
 
             </form>
           </div>
