@@ -15,7 +15,12 @@ class Account extends React.Component {
 
         <Header title={'Account'}/>
 
+
         <div className='account'>
+          <header>
+            Edit your account
+          </header>
+          
           <div className="updateEmail">
             <form>
               <div>
