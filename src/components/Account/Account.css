@@ -1,0 +1,23 @@
+.account {
+  margin: 0 7%;
+}
+
+.account > div {
+  margin: 30px 0px;
+}
+
+.account input {
+  width: 100%;
+  margin: 2px 0;
+}
+
+.account label {
+  font-size: 1.2rem;
+}
+
+.account button {
+  margin: 5px 0 0 0;
+  border: 1px solid darkgray;
+  background: white;
+  border-radius: 5px;
+}
