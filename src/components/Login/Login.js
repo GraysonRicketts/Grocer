@@ -1,8 +1,8 @@
 import React from 'react';
 
 import './Login.css';
-import Footer from './Footer';
-import Header from './Header';
+import Footer from './../Footer/Footer';
+import Header from './../Header/Header';
 
 class Login extends React.Component {
   constructor(props) {

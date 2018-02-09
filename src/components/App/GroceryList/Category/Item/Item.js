@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemEditor from './ItemEditor';
+import ItemEditor from './ItemEditor/ItemEditor';
 
 class Item extends React.Component {
   constructor(props) {

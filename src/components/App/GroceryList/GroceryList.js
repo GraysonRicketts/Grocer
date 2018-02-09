@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Search from './Search';
-import Category from './Category';
-import importedData from './data.json'
+import Search from './Search/Search';
+import Category from './Category/Category';
+import importedData from './../../../data/data.json'
 
 class GroceryList extends React.Component {
   constructor(props) {

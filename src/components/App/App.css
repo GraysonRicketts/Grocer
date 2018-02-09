@@ -40,6 +40,8 @@ body {
 
 .header li {
   list-style-type: none;
+  display: inline-block;
+  margin: 0 10px;
 }
 
 .header a {

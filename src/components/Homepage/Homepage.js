@@ -1,8 +1,8 @@
 import React from 'react';
 
 import './Homepage.css';
-import Footer from './Footer';
-import Header from './Header';
+import Footer from './../Footer/Footer';
+import Header from './../Header/Header';
 
 class Signup extends React.Component {
   constructor(props) {

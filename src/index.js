@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch } from 'react-router-dom';
 
 import './index.css';
-import App from './App';
-import Login from './Login';
-import Signup from './Signup';
-import Homepage from './Homepage';
-import registerServiceWorker from './registerServiceWorker';
+import App from './components/App/App';
+import Login from './components/Login/Login';
+import Signup from './components/Signup/Signup';
+import Homepage from './components/Homepage/Homepage';
 import Route from 'react-router-dom/Route';
 
 ReactDOM.render((
@@ -20,4 +19,3 @@ ReactDOM.render((
     </Switch>
   </BrowserRouter>
 ), document.getElementById('root'));
-registerServiceWorker();
