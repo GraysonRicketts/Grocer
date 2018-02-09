@@ -34,6 +34,18 @@ body {
   padding: 10px;
 }
 
+.header ul {
+  text-align: right;
+}
+
+.header li {
+  list-style-type: none;
+}
+
+.header a {
+  text-decoration: none;
+}
+
 .search input[type=text] {
   width: 100%;
   padding: 6px 10px;
