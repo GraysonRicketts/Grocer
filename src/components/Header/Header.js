@@ -4,10 +4,6 @@ class Header extends React.Component {
   render() {
     return (
       <div className="header">
-        <header>
-          {this.props.title}
-        </header>
-
         <nav>
           <ul>
             <li><a href="/">Home</a></li>
