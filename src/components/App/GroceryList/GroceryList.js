@@ -9,22 +9,33 @@ class GroceryList extends React.Component {
     super(props);
 
     this.state = {
-      items: importedData.items
+      items: []
     };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        items: importedData.items
+      });
+    }, 1000);
   }
 
   render() {
     let categories = {};
-    this.state.items.forEach((item) => {
-      if (!categories[item.category]) {
-        categories[item.category] = [];
-      }
-      let categoryList = categories[item.category];
-
-      categoryList.push(item);
-    });
-
     const list = [];
+
+    if (this.state.items.length > 0) {
+      this.state.items.forEach((item) => {
+        if (!categories[item.category]) {
+          categories[item.category] = [];
+        }
+        let categoryList = categories[item.category];
+  
+        categoryList.push(item);
+      });
+    }
+
     for(let category in categories) {
       const items = categories[category]
       category = (<Category categoryName={category} items={items} key={category}/>);
