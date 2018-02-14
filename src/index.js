@@ -1,23 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch } from 'react-router-dom';
-
+import { render } from 'react-dom';
+import { createStore } from 'redux'
 import './index.css';
-import Account from './components/Account/Account';
-import App from './components/App/App';
-import Login from './components/Login/Login';
-import Signup from './components/Signup/Signup';
-import Homepage from './components/Homepage/Homepage';
-import Route from 'react-router-dom/Route';
+import Root from './components/Root/Root';
 
-ReactDOM.render((
-  <BrowserRouter>
-    <Switch>
-      <Route exact path='/' component={Homepage}/>
-      <Route path='/account' component={Account}/>
-      <Route path='/basket' component={App}/>
-      <Route path='/login' component={Login}/>
-      <Route path='/signup' component={Signup}/>
-    </Switch>
-  </BrowserRouter>
-), document.getElementById('root'));
+let store = createStore();
+
+render(
+  <Root store={store} />,
+   document.getElementById('root')
+);
