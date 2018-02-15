@@ -1,4 +1,5 @@
 let nextItemId = 0;
+
 export const addItem = (
   category,
   name,

@@ -17,7 +17,7 @@ const items = (state = [], action) => {
       return [
         state.map(item => 
           (item.id === action.id)
-            ? {...todo, checkedOff: !item.checkedOff}
+            ? {...item, checkedOff: !item.checkedOff}
             : item
           )
       ];
