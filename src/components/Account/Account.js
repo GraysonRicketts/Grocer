@@ -29,8 +29,8 @@ const Account = () => (
         <form>
           <div>
             <label>Password</label>
-            <input type="password" placeHolder="Password"/>
-            <input type="password"placeHolder="Re-enter password"/>
+            <input type="password" placeholder="Password"/>
+            <input type="password" placeholder="Re-enter password"/>
           </div>
 
           <button type="submit">Update password</button>

@@ -25,7 +25,7 @@ const Signup = () => (
           <input type="password"/>
         </div>
 
-        <div class="signupSubmit">
+        <div className="signupSubmit">
           <input type="submit" value="Sign up"/>
           <a href="/login">
             <p>Already have an account? Login</p>
