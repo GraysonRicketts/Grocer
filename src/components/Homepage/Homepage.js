@@ -4,36 +4,28 @@ import './Homepage.css';
 import Footer from './../Footer/Footer';
 import Header from './../Header/Header';
 
-class Signup extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const Homepage = () => (
+  <div className="wrapper">
 
-  render() {
-    return (
-      <div className="wrapper">
+    <Header title={''}/>
 
-        <Header title={''}/>
+      <div className='home'>
+        <h1>
+          Grocery shopping made easy
+        </h1>
 
-          <div className='home'>
-            <h1>
-              Grocery shopping made easy
-            </h1>
+        <div className="subTitleArea">
+          <h3>
+            We're focused on making the trip to the grocery store effortless.
+          </h3>
 
-            <div className="subTitleArea">
-              <h3>
-                We're focused on making the trip to the grocery store effortless.
-              </h3>
-
-              <input type="submit" value="Sign up for free"/>
-            </div>
-          </div>
-
-        <Footer />
-
+          <input type="submit" value="Sign up for free"/>
+        </div>
       </div>
-    );
-  }
-}
 
-export default Signup;
+    <Footer />
+
+  </div>
+)
+
+export default Homepage;
