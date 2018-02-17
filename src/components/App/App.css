@@ -110,11 +110,11 @@ body {
   text-overflow: ellipsis;
 }
 
-.quantity, .activeIndicator {
+.number, .activeIndicator {
   flex: initial;
 }
 
-.quantity {
+.number {
   margin: 0 8px 0 24px;
   font-size: 1.4rem;
   font-weight: var(--med-light-text);

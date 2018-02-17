@@ -3,32 +3,19 @@ import React from 'react';
 import './App.css';
 import Footer from './../Footer/Footer';
 import Header from './../Header/Header';
-import GroceryList from './GroceryList/GroceryList';
+import GroceryList from './../../containers/GroceryList';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => (
+  <div className="wrapper">
 
-    this.state = {
-      user: "Grayson"
-    }
-  }
+    <Header />
 
-  render() {
-    const groceryListName = `${this.state.user}'s List`
+    <GroceryList />
 
-    return (
-      <div className="wrapper">
+    <Footer />
 
-        <Header title={groceryListName} />
+  </div>
+);
 
-        <GroceryList />
-
-        <Footer />
-
-      </div>
-    );
-  }
-}
 
 export default App;

@@ -1,31 +1,28 @@
 import React from 'react';
-
 import Item from './Item/Item';
 
-class Category extends React.Component {
-  render() {
-    const items = this.props.items.map((item) => {
-      return (
-        <Item itemName={item.itemName}
-        size={item.size}
-        quantity={item.quantity}
-        note={item.note}
-        key={item._id}/>
-      );
-    });
 
-    const categoryName = this.props.categoryName;
+const Category = ({ name, items }) => (
+  <div className='category'>
+    <h3>
+      {name}
+    </h3>
 
-    return (
-      <div className='category'>
-        <h3>
-          {categoryName}
-        </h3>
+    {
+      items.map((item) => {
+        return (
+          <Item 
+            key={item.id}
+            name={item.name}
+            size={item.size}
+            quantity={item.quantity}
+            note={item.note}
+          />
+        )
+      })
+    }
+  </div>
+)
 
-        {items}
-      </div>
-    );
-  }
-}
 
 export default Category;
