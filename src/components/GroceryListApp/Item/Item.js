@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemEditor from './ItemEditor/ItemEditor';
+import ItemEditor from './../ItemEditor/ItemEditor';
 
 const Item = ({ name, number, size, note }) => (
   <div className='itemRow' >

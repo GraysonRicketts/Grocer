@@ -1,28 +1,39 @@
-const items = (state = [], action) => {
+import { 
+  TOGGLE_ITEM,
+  RECEIVE_ITEMS,
+  REQUEST_ITEMS
+} from '../actions/itemActions'
+
+const items = (state = {
+  isFetching: false,
+  items: []
+}, action) => {
   switch(action.type) {
-    case 'ADD_ITEM':
+    case REQUEST_ITEMS:
+      return {
+        ...state,
+        isFetching: true
+      }
+    case RECEIVE_ITEMS:
       return [
         ...state,
         {
-          id: action.id,
-          category: action.category,
-          name: action.name,
-          number: action.number,
-          size: action.size,
-          note: action.note,
-          checkedOff: false,
+          isFetching: false,
+          items: action.items,
+          lastUpdate: action.receivedAt
         }
-      ];
-    case 'TOGGLE_ITEM':
+      ]
+    case TOGGLE_ITEM:
       return [
-        state.map(item => 
-          (item.id === action.id)
-            ? {...item, checkedOff: !item.checkedOff}
-            : item
-          )
-      ];
+        state.map((item, id) => {
+          if (id === action.id) {
+            return {...item, checkedOff: !item.checkedOff}
+          }
+          return item
+        })
+      ]
     default:
-      return state;
+      return state
   }
 }
 

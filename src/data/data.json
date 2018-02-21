@@ -6,61 +6,61 @@
       "size": "large",
       "category": "Produce",
       "note": "the good type",
-      "_id": 1
+      "id": 1
     },
     {
       "name": "potatoes",
       "quantity": 2,
       "category": "Produce",
-      "_id": 2
+      "id": 2
     },
     {
       "name": "supersupersupersupersupersupersupersupersupersuper super super long name",
       "quantity": 1,
       "category": "Meat",
-      "_id": 3
+      "id": 3
     },
     {
       "name": "steak",
       "quantity": 1,
       "size": "8oz",
       "category": "Meat",
-      "_id": 4
+      "id": 4
     },
     {
       "name": "steak",
       "quantity": 1,
       "size": "8oz",
       "category": "Meat",
-      "_id": 5
+      "id": 5
     },
     {
       "name": "steak",
       "quantity": 1,
       "size": "8oz",
       "category": "Meat",
-      "_id": 6
+      "id": 6
     },
     {
       "name": "steak",
       "quantity": 1,
       "size": "8oz",
       "category": "Meat",
-      "_id": 7
+      "id": 7
     },
     {
       "name": "steak",
       "quantity": 1,
       "size": "8oz",
       "category": "Meat",
-      "_id": 8
+      "id": 8
     },
     {
       "name": "milk",
       "quantity": 2,
       "size": "1 Gallon",
       "category": "Dairy",
-      "_id": 9
+      "id": 9
     }
   ]
 }

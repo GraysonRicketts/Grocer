@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Account.css';
+import './../../styles/Account.css';
 import Footer from './../Footer/Footer';
 import Header from './../Header/Header';
 
