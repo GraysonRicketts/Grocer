@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import items from './items'
+import basket from './basket'
 
-const itemApp = combineReducers({
-  items
-});
-
-export default itemApp;
+export default combineReducers({
+  basket
+})

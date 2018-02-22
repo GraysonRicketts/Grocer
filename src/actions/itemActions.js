@@ -8,7 +8,8 @@ export function toggleItem(id) {
   return { type: TOGGLE_ITEM, id }
 }
 
-function receiveItems(basket, json) {
+function receiveBasket(basket, json) {
+  debugger
   return {
     type: RECEIVE_ITEMS,
     basket,
@@ -17,40 +18,41 @@ function receiveItems(basket, json) {
   }
 }
 
-function requestItems(basket) {
+function requestBasket(basket) {
   return {
     type: REQUEST_ITEMS,
     basket
   }
 }
 
-function fetchItems(basket) {
+function fetchBasket(basket) {
   return dispatch => {
-    dispatch(requestItems(basket))
+    dispatch(requestBasket(basket))
     
     // TODO: call to API
     return setTimeout(() => {
-        dispatch(receiveItems(basket, json))
+        dispatch(receiveBasket(basket, json))
       }, 1000)
   }
 }
 
-function shouldFetchItems(state) {
-  const items = state.items
+function shouldFetchBasket(state) {
+  const basket = state.basket
 
-  if (!items) {
+  // debugger
+  // if (!basket) {
     return true
-  } else if (items.isFetching) {
-    return false
-  } else {
-    return items.didInvalidate
-  }
+  // } else if (basket.isFetching) {
+  //   return false
+  // } else {
+  //   return basket.didInvalidate
+  // }
 }
 
 export function fetchItemsIfNeeded(basket) {
   return (dispatch, getState) => {
-    if (shouldFetchItems(getState())) {
-      return dispatch(fetchItems(basket))
+    if (shouldFetchBasket(getState())) {
+      return dispatch(fetchBasket(basket))
     }
   }
 }

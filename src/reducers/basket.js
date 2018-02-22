@@ -4,10 +4,7 @@ import {
   REQUEST_ITEMS
 } from '../actions/itemActions'
 
-const items = (state = {
-  isFetching: false,
-  items: []
-}, action) => {
+export default function basket (state = { isFetching: false, items: [] }, action) {
   switch(action.type) {
     case REQUEST_ITEMS:
       return {
@@ -15,14 +12,12 @@ const items = (state = {
         isFetching: true
       }
     case RECEIVE_ITEMS:
-      return [
+      return {
         ...state,
-        {
-          isFetching: false,
-          items: action.items,
-          lastUpdate: action.receivedAt
-        }
-      ]
+        isFetching: false,
+        items: action.items,
+        lastUpdate: action.receivedAt
+      }
     case TOGGLE_ITEM:
       return [
         state.map((item, id) => {
@@ -36,5 +31,3 @@ const items = (state = {
       return state
   }
 }
-
-export default items;

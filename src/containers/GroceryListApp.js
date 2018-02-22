@@ -13,7 +13,7 @@ class GroceryList extends Component {
   }
 
   render() {
-    const { categories } = this.props
+    const { basket, categories, isFetching, lastUpdated } = this.props
     return (
       <div>
 
@@ -52,20 +52,21 @@ const getCategories = (items) => {
 }
 
 const mapStateToProps = state => {
+  debugger
   return {
-    categories: getCategories(state.items)
+    categories: getCategories(state.basket.items)
   }
 }
 
-const mapDispathToProps = dispatch => {
-  return {
-    onItemToggled: id => {
-      dispatch(toggleItem(id))
-    }
-  }
-}
+// const mapDispathToProps = dispatch => {
+//   return {
+//     onItemToggled: id => {
+//       dispatch(toggleItem(id))
+//     }
+//   }
+// }
 
 export default connect(
   mapStateToProps,
-  mapDispathToProps
+  // mapDispathToProps
 )(GroceryList)
