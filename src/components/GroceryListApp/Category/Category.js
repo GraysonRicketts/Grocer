@@ -20,7 +20,7 @@ export default class Category extends Component {
                 key={item.id}
                 name={item.name}
                 size={item.size}
-                quantity={item.quantity}
+                number={item.number}
                 note={item.note}
               />
             )

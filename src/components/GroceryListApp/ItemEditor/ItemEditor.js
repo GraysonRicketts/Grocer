@@ -1,27 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const ItemEditor = () => (
-  <form className='itemEditor'>
-    <div>
-      <label htmlFor="">Item</label>
-      <input type="text"/>
-    </div>
+export default class ItemEditor extends Component {
+  render() {
+    const { name, number, size, note } = this.props
+    return (
+      <form className='itemEditor'>
+        <div>
+          <label htmlFor="">Item</label>
+          <input type="text" value={name}/>
+        </div>
 
-    <div>
-      <label htmlFor="">Quantity</label>
-      <input type="text"/>
-    </div>
+        <div>
+          <label htmlFor="">Number</label>
+          <input type="number" value={number} />
+        </div>
 
-    <div>
-      <label htmlFor="">Size</label>
-      <input type="text"/>
-    </div>
+        <div>
+          <label htmlFor="">Size</label>
+          <input type="text" value={size} />
+        </div>
 
-    <div>
-      <label htmlFor="">Note</label>
-      <input type="text"></input>
-    </div>
-  </form>
-)
-
-export default ItemEditor;
+        <div>
+          <label htmlFor="">Note</label>
+          <input type="text-area" value={note}/>
+        </div>
+      </form>
+    )
+  }
+}

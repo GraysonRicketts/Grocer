@@ -2,7 +2,7 @@
   "items": [
     {
       "name": "lettuce",
-      "quantity": 8,
+      "number": 8,
       "size": "large",
       "category": "Produce",
       "note": "the good type",
@@ -12,7 +12,7 @@
     },
     {
       "name": "potatoes",
-      "quantity": 2,
+      "number": 2,
       "category": "Produce",
       "id": 1,
       "checkedOff": false,
@@ -20,7 +20,7 @@
     },
     {
       "name": "supersupersupersupersupersupersupersupersupersuper super super long name",
-      "quantity": 1,
+      "number": 1,
       "category": "Meat",
       "id": 2,
       "checkedOff": false,
@@ -28,7 +28,7 @@
     },
     {
       "name": "steak",
-      "quantity": 1,
+      "number": 1,
       "size": "8oz",
       "category": "Meat",
       "id": 3,
@@ -37,7 +37,7 @@
     },
     {
       "name": "steak",
-      "quantity": 1,
+      "number": 1,
       "size": "8oz",
       "category": "Meat",
       "id": 4,
@@ -46,7 +46,7 @@
     },
     {
       "name": "steak",
-      "quantity": 1,
+      "number": 1,
       "size": "8oz",
       "category": "Meat",
       "id": 5,
@@ -55,7 +55,7 @@
     },
     {
       "name": "steak",
-      "quantity": 1,
+      "number": 1,
       "size": "8oz",
       "category": "Meat",
       "id": 6,
@@ -64,7 +64,7 @@
     },
     {
       "name": "steak",
-      "quantity": 1,
+      "number": 1,
       "size": "8oz",
       "category": "Meat",
       "id": 7,
@@ -73,7 +73,7 @@
     },
     {
       "name": "milk",
-      "quantity": 2,
+      "number": 2,
       "size": "1 Gallon",
       "category": "Dairy",
       "id": 8,

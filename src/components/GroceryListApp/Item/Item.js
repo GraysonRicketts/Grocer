@@ -3,7 +3,7 @@ import ItemEditor from './../ItemEditor/ItemEditor';
 
 export default class Item extends Component {
   render() {
-    const { onClick, name, number, size, note, toggleItem } = this.props
+    const { onClick, name, number, size, note } = this.props
 
     return (
       <div className='itemRow' >
@@ -37,7 +37,11 @@ export default class Item extends Component {
       </div>
 
       <div className="itemForm" >
-        <ItemEditor />
+        <ItemEditor 
+        name={name}
+        number={number}
+        size={size}
+        note={note}/>
       </div>
 
       </div>
