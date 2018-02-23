@@ -6,61 +6,79 @@
       "size": "large",
       "category": "Produce",
       "note": "the good type",
-      "id": 1
+      "id": 0,
+      "checkedOff": false,
+      "checkedOffOn": null
     },
     {
       "name": "potatoes",
       "quantity": 2,
       "category": "Produce",
-      "id": 2
+      "id": 1,
+      "checkedOff": false,
+      "checkedOffOn": null
     },
     {
       "name": "supersupersupersupersupersupersupersupersupersuper super super long name",
       "quantity": 1,
       "category": "Meat",
-      "id": 3
+      "id": 2,
+      "checkedOff": false,
+      "checkedOffOn": null
     },
     {
       "name": "steak",
       "quantity": 1,
       "size": "8oz",
       "category": "Meat",
-      "id": 4
+      "id": 3,
+      "checkedOff": false,
+      "checkedOffOn": null
     },
     {
       "name": "steak",
       "quantity": 1,
       "size": "8oz",
       "category": "Meat",
-      "id": 5
+      "id": 4,
+      "checkedOff": false,
+      "checkedOffOn": null
     },
     {
       "name": "steak",
       "quantity": 1,
       "size": "8oz",
       "category": "Meat",
-      "id": 6
+      "id": 5,
+      "checkedOff": false,
+      "checkedOffOn": null
     },
     {
       "name": "steak",
       "quantity": 1,
       "size": "8oz",
       "category": "Meat",
-      "id": 7
+      "id": 6,
+      "checkedOff": false,
+      "checkedOffOn": null
     },
     {
       "name": "steak",
       "quantity": 1,
       "size": "8oz",
       "category": "Meat",
-      "id": 8
+      "id": 7,
+      "checkedOff": false,
+      "checkedOffOn": null
     },
     {
       "name": "milk",
       "quantity": 2,
       "size": "1 Gallon",
       "category": "Dairy",
-      "id": 9
+      "id": 8,
+      "checkedOff": false,
+      "checkedOffOn": null
     }
   ]
 }

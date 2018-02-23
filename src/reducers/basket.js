@@ -19,14 +19,16 @@ export default function basket (state = { isFetching: false, items: [] }, action
         lastUpdate: action.receivedAt
       }
     case TOGGLE_ITEM:
-      return [
-        state.map((item, id) => {
+      return {
+        ...state,
+        items: state.items.map((item, id) => {
           if (id === action.id) {
             return {...item, checkedOff: !item.checkedOff}
           }
+
           return item
         })
-      ]
+      }
     default:
       return state
   }

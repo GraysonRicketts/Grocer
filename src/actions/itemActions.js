@@ -9,7 +9,6 @@ export function toggleItem(id) {
 }
 
 function receiveBasket(basket, json) {
-  debugger
   return {
     type: RECEIVE_ITEMS,
     basket,
@@ -37,16 +36,7 @@ function fetchBasket(basket) {
 }
 
 function shouldFetchBasket(state) {
-  const basket = state.basket
-
-  // debugger
-  // if (!basket) {
     return true
-  // } else if (basket.isFetching) {
-  //   return false
-  // } else {
-  //   return basket.didInvalidate
-  // }
 }
 
 export function fetchItemsIfNeeded(basket) {

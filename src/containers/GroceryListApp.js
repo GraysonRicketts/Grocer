@@ -8,12 +8,11 @@ import Footer from '../components/Footer/Footer';
 
 class GroceryList extends Component {
   componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(fetchItemsIfNeeded('any'))
+    this.props.fetchItemsIfNeeded('any')
   }
 
   render() {
-    const { basket, categories, isFetching, lastUpdated } = this.props
+    const { basket, categories, isFetching, lastUpdated, toggleItem } = this.props
     return (
       <div>
 
@@ -25,7 +24,8 @@ class GroceryList extends Component {
           {Object.keys(categories).map(name => (
             <Category key={categories[name].id} 
             name={name}
-            items={categories[name].items} />
+            items={categories[name].items}
+            toggleItem={toggleItem} />
           ))}
         </div>
 
@@ -51,22 +51,18 @@ const getCategories = (items) => {
   return categories
 }
 
-const mapStateToProps = state => {
-  debugger
+function mapStateToProps(state) {
   return {
     categories: getCategories(state.basket.items)
   }
 }
 
-// const mapDispathToProps = dispatch => {
-//   return {
-//     onItemToggled: id => {
-//       dispatch(toggleItem(id))
-//     }
-//   }
-// }
+const mapDispathToProps = {
+  toggleItem,
+  fetchItemsIfNeeded
+}
 
 export default connect(
   mapStateToProps,
-  // mapDispathToProps
+  mapDispathToProps
 )(GroceryList)
