@@ -16,12 +16,9 @@ export default class Category extends Component {
           items.map((item) => {
             return (
               <Item 
-                onClick={() => toggleItem(item.id)}
+                toggleItem={() => toggleItem(item.id)}
                 key={item.id}
-                name={item.name}
-                size={item.size}
-                number={item.number}
-                note={item.note}
+                id={item.id}
               />
             )
           })
