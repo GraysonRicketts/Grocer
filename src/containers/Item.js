@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import ItemEditor from './../ItemEditor/ItemEditor';
+import ItemEditor from './../components/GroceryListApp/ItemEditor/ItemEditor';
 import { connect } from 'react-redux'
+import { toggleItem, updateItemIfNeeded } from '../actions/itemActions'
 
 class Item extends Component {
   constructor(props) {
@@ -10,15 +11,9 @@ class Item extends Component {
       expanded: false
     }
 
-    this.handleCheckBoxOnClick = this.handleCheckBoxOnClick.bind(this)
     this.handleRowOnClick = this.handleRowOnClick.bind(this)
-  }
-
-  handleCheckBoxOnClick() {
-    const { toggleItem } = this.props
-
-
-    toggleItem()
+    this.handleToggle = this.handleToggle.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
   }
 
   handleRowOnClick() {
@@ -30,14 +25,26 @@ class Item extends Component {
     })
   }
 
+  handleToggle() {
+    const { toggleItem, id } = this.props
+    toggleItem(id)
+  }
+
+  handleEdit() {
+    const { updateItemIfNeeded, id, item} = this.props
+    updateItemIfNeeded(id, item)
+  }
+
   render() {
-    const { name, number, size, note } = this.props.item
+    const { name, number, size, note, checkedOff } = this.props.item
 
     return (
       <div className='itemRow' >
 
-        <div className="item">
-          <div className='itemTextDiv' onClick={this.handleRowOnClick}>
+        <div className="item" style={{opacity: checkedOff ? .4 : null}}>
+          <div className='itemTextDiv' 
+          onClick={this.handleRowOnClick}
+          style={{textDecoration: checkedOff ? 'line-through': 'none'}}>
             <div>
               <h4>
                 {name}
@@ -63,7 +70,7 @@ class Item extends Component {
           <div className="activeIndicator">
             <label className='check'>
               <input type="checkbox" className="checkbox" 
-              onClick={this.handleCheckBoxOnClick}/>
+              onClick={this.handleToggle}/>
               <div className="box"></div>
             </label>
           </div>
@@ -76,7 +83,8 @@ class Item extends Component {
               name={name}
               number={number}
               size={size}
-              note={note}/>
+              note={note}
+              onChange={this.handleEdit}/>
             </div>
           ) : null
         }
@@ -86,10 +94,18 @@ class Item extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapDispatchToProps = {
+  toggleItem,
+  updateItemIfNeeded
+}
+
+function mapStateToProps(state, ownProps) {
   return {
     item: state.basket.items[ownProps.id]
   }
 }
 
-export default connect(mapStateToProps)(Item)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Item)

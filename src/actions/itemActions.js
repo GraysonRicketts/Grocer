@@ -3,10 +3,12 @@ import json from './../data/data'
 export const TOGGLE_ITEM = 'TOGGLE_ITEM'
 export const RECEIVE_ITEMS = 'RECEIVE_ITEMS'
 export const REQUEST_ITEMS = 'REQUEST_ITEMS'
+export const UPDATE_ITEM = 'UPDATE_ITEM'
+export const REQUEST_UPDATE = 'REQUEST_UPDATE'
 
-export function toggleItem(id) {
-  return { type: TOGGLE_ITEM, id }
-}
+/*
+Fetch
+*/
 
 function receiveBasket(basket, json) {
   return {
@@ -45,4 +47,37 @@ export function fetchItemsIfNeeded(basket) {
       return dispatch(fetchBasket(basket))
     }
   }
+}
+
+/*
+Update
+*/
+
+function updateItem(id, item) {
+  return {
+    type: UPDATE_ITEM,
+    id,
+    item
+  }
+}
+
+function shouldUpdateItem(state) {
+  return true
+}
+
+export function updateItemIfNeeded(id, item) {
+  return (dispatch, getState) => {
+    if (shouldUpdateItem(getState())) {
+      return dispatch(updateItem(id, item))
+    }
+  }
+}
+
+
+/*
+Toggle
+*/
+
+export function toggleItem(id) {
+  return { type: TOGGLE_ITEM, id }
 }

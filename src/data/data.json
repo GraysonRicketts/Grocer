@@ -7,24 +7,21 @@
       "category": "Produce",
       "note": "the good type",
       "id": 0,
-      "checkedOff": false,
-      "checkedOffOn": null
+      "checkedOff": false
     },
     {
       "name": "potatoes",
       "number": 2,
       "category": "Produce",
       "id": 1,
-      "checkedOff": false,
-      "checkedOffOn": null
+      "checkedOff": false
     },
     {
       "name": "supersupersupersupersupersupersupersupersupersuper super super long name",
       "number": 1,
       "category": "Meat",
       "id": 2,
-      "checkedOff": false,
-      "checkedOffOn": null
+      "checkedOff": false
     },
     {
       "name": "steak",
@@ -32,8 +29,7 @@
       "size": "8oz",
       "category": "Meat",
       "id": 3,
-      "checkedOff": false,
-      "checkedOffOn": null
+      "checkedOff": false
     },
     {
       "name": "steak",
@@ -41,8 +37,7 @@
       "size": "8oz",
       "category": "Meat",
       "id": 4,
-      "checkedOff": false,
-      "checkedOffOn": null
+      "checkedOff": false
     },
     {
       "name": "steak",
@@ -50,8 +45,7 @@
       "size": "8oz",
       "category": "Meat",
       "id": 5,
-      "checkedOff": false,
-      "checkedOffOn": null
+      "checkedOff": false
     },
     {
       "name": "steak",
@@ -59,8 +53,7 @@
       "size": "8oz",
       "category": "Meat",
       "id": 6,
-      "checkedOff": false,
-      "checkedOffOn": null
+      "checkedOff": false
     },
     {
       "name": "steak",
@@ -68,8 +61,7 @@
       "size": "8oz",
       "category": "Meat",
       "id": 7,
-      "checkedOff": false,
-      "checkedOffOn": null
+      "checkedOff": false
     },
     {
       "name": "milk",
@@ -77,8 +69,7 @@
       "size": "1 Gallon",
       "category": "Dairy",
       "id": 8,
-      "checkedOff": false,
-      "checkedOffOn": null
+      "checkedOff": false
     }
   ]
 }
