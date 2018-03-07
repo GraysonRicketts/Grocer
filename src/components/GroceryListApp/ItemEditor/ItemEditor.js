@@ -20,28 +20,28 @@ export default class ItemEditor extends Component {
     return (
       <form className='itemEditor'>
         <div>
-          <label htmlFor="">Item</label>
+          <label htmlFor="name">Item</label>
           <input type="text" name={"name"}
           value={name} 
           onChange={this.handleOnChange} />
         </div>
 
         <div>
-          <label htmlFor="">Number</label>
+          <label htmlFor="number">Number</label>
           <input type="number" name={"number"}
           value={number} 
           onChange={this.handleOnChange} />
         </div>
 
         <div>
-          <label htmlFor="">Size</label>
+          <label htmlFor="size">Size</label>
           <input type="text" name={"size"}
           value={size} 
           onChange={this.handleOnChange} />
         </div>
 
         <div>
-          <label htmlFor="">Note</label>
+          <label htmlFor="note">Note</label>
           <input type="text-area" name={"note"}
           value={note} 
           onChange={this.handleOnChange}/>
