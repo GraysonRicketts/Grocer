@@ -1,28 +1,50 @@
 import React, { Component } from 'react';
 
 export default class ItemEditor extends Component {
+  constructor(props) {
+    super(props)
+
+    this.handleOnChange = this.handleOnChange.bind(this)
+  }
+
+  handleOnChange(event) {
+    const { onChange, id } = this.props
+    const key = event.target.name
+    const value = event.target.value
+
+    onChange(id, {[key]: value})
+  }
+
   render() {
-    const { onChange, name, number, size, note } = this.props
+    const { name, number, size, note } = this.props
     return (
       <form className='itemEditor'>
         <div>
           <label htmlFor="">Item</label>
-          <input type="text" value={name} onChange={onChange} />
+          <input type="text" name={"name"}
+          value={name} 
+          onChange={this.handleOnChange} />
         </div>
 
         <div>
           <label htmlFor="">Number</label>
-          <input type="number" value={number} onChange={onChange} />
+          <input type="number" name={"number"}
+          value={number} 
+          onChange={this.handleOnChange} />
         </div>
 
         <div>
           <label htmlFor="">Size</label>
-          <input type="text" value={size} onChange={onChange} />
+          <input type="text" name={"size"}
+          value={size} 
+          onChange={this.handleOnChange} />
         </div>
 
         <div>
           <label htmlFor="">Note</label>
-          <input type="text-area" value={note} onChange={onChange}/>
+          <input type="text-area" name={"note"}
+          value={note} 
+          onChange={this.handleOnChange}/>
         </div>
       </form>
     )

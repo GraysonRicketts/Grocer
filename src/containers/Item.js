@@ -13,7 +13,6 @@ class Item extends Component {
 
     this.handleRowOnClick = this.handleRowOnClick.bind(this)
     this.handleToggle = this.handleToggle.bind(this)
-    this.handleEdit = this.handleEdit.bind(this)
   }
 
   handleRowOnClick() {
@@ -30,13 +29,8 @@ class Item extends Component {
     toggleItem(id)
   }
 
-  handleEdit() {
-    const { updateItemIfNeeded, id, item} = this.props
-    updateItemIfNeeded(id, item)
-  }
-
   render() {
-    const { name, number, size, note, checkedOff } = this.props.item
+    const { id, name, number, size, note, checkedOff } = this.props.item
 
     return (
       <div className='itemRow' >
@@ -79,12 +73,13 @@ class Item extends Component {
         {this.state.expanded ?
           (
             <div className="itemForm" >
-              <ItemEditor 
+              <ItemEditor
+              id={id}
               name={name}
               number={number}
               size={size}
               note={note}
-              onChange={this.handleEdit}/>
+              onChange={this.props.updateItemIfNeeded}/>
             </div>
           ) : null
         }

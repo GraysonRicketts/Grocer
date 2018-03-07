@@ -53,11 +53,11 @@ export function fetchItemsIfNeeded(basket) {
 Update
 */
 
-function updateItem(id, item) {
+function updateItem(id, update) {
   return {
     type: UPDATE_ITEM,
     id,
-    item
+    update
   }
 }
 
@@ -65,14 +65,13 @@ function shouldUpdateItem(state) {
   return true
 }
 
-export function updateItemIfNeeded(id, item) {
+export function updateItemIfNeeded(id, update) {
   return (dispatch, getState) => {
     if (shouldUpdateItem(getState())) {
-      return dispatch(updateItem(id, item))
+      return dispatch(updateItem(id, update))
     }
   }
 }
-
 
 /*
 Toggle

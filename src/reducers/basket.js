@@ -35,8 +35,8 @@ export default function basket (state = { isFetching: false, items: [] }, action
         ...state,
         items: state.items.map((item, id) => {
           if (id === action.id) {
-            const updatedItem = action.item
-            return {...item, ...updatedItem}
+            const update = action.update
+            return {...item, ...update}
           }
 
           return item
