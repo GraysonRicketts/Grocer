@@ -1,66 +1,75 @@
 {
   "items": [
     {
-      "itemName": "lettuce",
-      "quantity": 8,
+      "name": "lettuce",
+      "number": 8,
       "size": "large",
       "category": "Produce",
       "note": "the good type",
-      "_id": 1
+      "id": 0,
+      "checkedOff": false
     },
     {
-      "itemName": "potatoes",
-      "quantity": 2,
+      "name": "potatoes",
+      "number": 2,
       "category": "Produce",
-      "_id": 2
+      "id": 1,
+      "checkedOff": false
     },
     {
-      "itemName": "supersupersupersupersupersupersupersupersupersuper super super long name",
-      "quantity": 1,
+      "name": "supersupersupersupersupersupersupersupersupersuper super super long name",
+      "number": 1,
       "category": "Meat",
-      "_id": 3
+      "id": 2,
+      "checkedOff": false
     },
     {
-      "itemName": "steak",
-      "quantity": 1,
+      "name": "steak",
+      "number": 1,
       "size": "8oz",
       "category": "Meat",
-      "_id": 4
+      "id": 3,
+      "checkedOff": false
     },
     {
-      "itemName": "steak",
-      "quantity": 1,
+      "name": "steak",
+      "number": 1,
       "size": "8oz",
       "category": "Meat",
-      "_id": 5
+      "id": 4,
+      "checkedOff": false
     },
     {
-      "itemName": "steak",
-      "quantity": 1,
+      "name": "steak",
+      "number": 1,
       "size": "8oz",
       "category": "Meat",
-      "_id": 6
+      "id": 5,
+      "checkedOff": false
     },
     {
-      "itemName": "steak",
-      "quantity": 1,
+      "name": "steak",
+      "number": 1,
       "size": "8oz",
       "category": "Meat",
-      "_id": 7
+      "id": 6,
+      "checkedOff": false
     },
     {
-      "itemName": "steak",
-      "quantity": 1,
+      "name": "steak",
+      "number": 1,
       "size": "8oz",
       "category": "Meat",
-      "_id": 8
+      "id": 7,
+      "checkedOff": false
     },
     {
-      "itemName": "milk",
-      "quantity": 2,
+      "name": "milk",
+      "number": 2,
       "size": "1 Gallon",
       "category": "Dairy",
-      "_id": 9
+      "id": 8,
+      "checkedOff": false
     }
   ]
 }
