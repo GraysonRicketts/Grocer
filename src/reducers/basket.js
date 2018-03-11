@@ -2,7 +2,8 @@ import {
   TOGGLE_ITEM,
   RECEIVE_ITEMS,
   REQUEST_ITEMS,
-  UPDATE_ITEM
+  UPDATE_ITEM,
+  ADD_ITEM
 } from '../actions/itemActions'
 
 export default function basket (state = { isFetching: false, items: [] }, action) {
@@ -22,8 +23,8 @@ export default function basket (state = { isFetching: false, items: [] }, action
     case TOGGLE_ITEM:
       return {
         ...state,
-        items: state.items.map((item, id) => {
-          if (id === action.id) {
+        items: state.items.map((item) => {
+          if (item.id === action.id) {
             return {...item, checkedOff: !item.checkedOff}
           }
 
@@ -33,14 +34,19 @@ export default function basket (state = { isFetching: false, items: [] }, action
     case UPDATE_ITEM:
       return {
         ...state,
-        items: state.items.map((item, id) => {
-          if (id === action.id) {
+        items: state.items.map((item) => {
+          if (item.id === action.id) {
             const update = action.update
             return {...item, ...update}
           }
 
           return item
         })
+      }
+    case ADD_ITEM:
+      return {
+        ...state,
+        items: state.items.concat(action.newItem)
       }
     default:
       return state

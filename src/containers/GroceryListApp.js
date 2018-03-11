@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { fetchItemsIfNeeded } from '../actions/itemActions'
+import { fetchItemsIfNeeded, addItemToBasket } from '../actions/itemActions'
 import Search from './../components/GroceryListApp/Search/Search';
 import Category from './../components/GroceryListApp/Category/Category';
 import Header from '../components/Header/Header';
@@ -12,16 +12,16 @@ class GroceryList extends Component {
   }
 
   render() {
-    const { categories } = this.props
+    const { categories, addItemToBasket } = this.props
     return (
       <div>
 
         <Header />
 
         <div className="groceryList">
-          <Search />
+          <Search addItemToBasket={addItemToBasket}/>
 
-          {Object.keys(categories).map(name => (
+          {Object.keys(categories).sort().map(name => (
             <Category
             key={categories[name].id}
             name={name}
@@ -41,11 +41,13 @@ const getCategories = (items) => {
 
   if (items.length > 0) {
     items.forEach((item) => {
-      if (!categories[item.category]) {
+      const categoryName = item.category
+
+      if (!categories[categoryName]) {
         categories[item.category] = { id: id++, items: []}
       }
-      
-      categories[item.category].items.push(item);
+
+      categories[categoryName].items.push(item);
     });
   }
 
@@ -59,7 +61,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispathToProps = {
-  fetchItemsIfNeeded
+  fetchItemsIfNeeded,
+  addItemToBasket
 }
 
 export default connect(

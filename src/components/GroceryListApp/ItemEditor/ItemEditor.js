@@ -42,9 +42,9 @@ export default class ItemEditor extends Component {
 
         <div>
           <label htmlFor="note">Note</label>
-          <input type="text-area" name={"note"}
-          value={note} 
-          onChange={this.handleOnChange}/>
+          <textarea name={"note"}onChange={this.handleOnChange}>
+            {note}
+          </textarea>
         </div>
       </form>
     )

@@ -5,6 +5,7 @@ export const RECEIVE_ITEMS = 'RECEIVE_ITEMS'
 export const REQUEST_ITEMS = 'REQUEST_ITEMS'
 export const UPDATE_ITEM = 'UPDATE_ITEM'
 export const REQUEST_UPDATE = 'REQUEST_UPDATE'
+export const ADD_ITEM = 'ADD_ITEM'
 
 /*
 Fetch
@@ -70,6 +71,23 @@ export function updateItemIfNeeded(id, update) {
     if (shouldUpdateItem(getState())) {
       return dispatch(updateItem(id, update))
     }
+  }
+}
+
+/*
+Add
+*/
+
+function addItem(newItem) {
+  return {
+    type: ADD_ITEM,
+    newItem
+  }
+}
+
+export function addItemToBasket(newItem) {
+  return (dispatch) => {
+    return dispatch(addItem(newItem))
   }
 }
 
