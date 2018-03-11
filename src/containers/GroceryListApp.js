@@ -8,7 +8,7 @@ import Footer from '../components/Footer/Footer';
 
 class GroceryList extends Component {
   componentDidMount() {
-    // this.props.fetchItemsIfNeeded('any')
+    this.props.fetchItemsIfNeeded('any')
   }
 
   render() {

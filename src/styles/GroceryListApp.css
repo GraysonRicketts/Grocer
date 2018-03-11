@@ -24,7 +24,7 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-input {
+input, textarea {
   font-size: 16px;
 }
 
@@ -142,12 +142,17 @@ input {
   min-width: 30%;
   text-align: right;
   margin: 0 5% 0 0;
+  vertical-align: top;
 }
 
-.itemEditor input {
+.itemEditor input,textarea {
   width: 65%;
   border: 1px solid var(--border-color);
   border-radius: 3px;
+}
+
+.itemEditor textarea {
+  height: 4rem;
 }
 
 /* 
