@@ -96,7 +96,9 @@ const mapDispatchToProps = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    item: state.basket.items[ownProps.id]
+    item: state.basket.items.find((item) => { 
+      return item.id === ownProps.id
+    })
   }
 }
 
