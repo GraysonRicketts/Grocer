@@ -30,7 +30,7 @@ class Item extends Component {
   }
 
   render() {
-    const { id, name, number, size, note, checkedOff } = this.props.item
+    const { id, name, number, size, note, category, checkedOff } = this.props.item
 
     return (
       <div className='itemRow' >
@@ -78,6 +78,7 @@ class Item extends Component {
               name={name}
               number={number}
               size={size}
+              category={category}
               note={note}
               onChange={this.props.updateItemIfNeeded}/>
             </div>
