@@ -19,7 +19,7 @@ export default class ItemEditor extends Component {
   render() {
     const { name, number, size, category, note } = this.props
     return (
-      <form className='itemEditor'>
+      <div className='itemEditor'>
         <div>
           <label htmlFor="name">Item</label>
           <input type="text" name="name"
@@ -58,7 +58,10 @@ export default class ItemEditor extends Component {
           <label htmlFor="note">Note</label>
           <textarea name={"note"}onChange={this.handleOnChange} value={note} />
         </div>
-      </form>
+        <div>
+          <i className='far fa-trash-alt'></i>
+        </div>
+      </div>
     )
   }
 }
