@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ItemEditor from './../components/GroceryListApp/ItemEditor/ItemEditor';
 import { connect } from 'react-redux'
-import { toggleItem, updateItemIfNeeded } from '../actions/itemActions'
+import { toggleItem, updateItemIfNeeded, deleteItemFromBasket } from '../actions/itemActions'
 
 class Item extends Component {
   constructor(props) {
@@ -80,7 +80,8 @@ class Item extends Component {
               size={size}
               category={category}
               note={note}
-              onChange={this.props.updateItemIfNeeded}/>
+              onChange={this.props.updateItemIfNeeded}
+              onDelete={this.props.deleteItemFromBasket}/>
             </div>
           ) : null
         }
@@ -92,7 +93,8 @@ class Item extends Component {
 
 const mapDispatchToProps = {
   toggleItem,
-  updateItemIfNeeded
+  updateItemIfNeeded,
+  deleteItemFromBasket
 }
 
 function mapStateToProps(state, ownProps) {

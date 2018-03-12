@@ -6,6 +6,13 @@ export default class ItemEditor extends Component {
     super(props)
 
     this.handleOnChange = this.handleOnChange.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+  }
+
+  handleDelete() {
+    const { onDelete, id } = this.props
+
+    onDelete(id)
   }
 
   handleOnChange(event) {
@@ -59,7 +66,9 @@ export default class ItemEditor extends Component {
           <textarea name={"note"}onChange={this.handleOnChange} value={note} />
         </div>
         <div>
-          <i className='far fa-trash-alt'></i>
+          <button onClick={this.handleDelete}>
+            <i className='far fa-trash-alt' style={{color: 'red', width: '1rem', height: '1rem'}}/>
+          </button>
         </div>
       </div>
     )

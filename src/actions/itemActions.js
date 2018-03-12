@@ -6,6 +6,7 @@ export const REQUEST_ITEMS = 'REQUEST_ITEMS'
 export const UPDATE_ITEM = 'UPDATE_ITEM'
 export const REQUEST_UPDATE = 'REQUEST_UPDATE'
 export const ADD_ITEM = 'ADD_ITEM'
+export const DELETE_ITEM = 'DELETE_ITEM'
 
 /*
 Fetch
@@ -88,6 +89,23 @@ function addItem(newItem) {
 export function addItemToBasket(newItem) {
   return (dispatch) => {
     return dispatch(addItem(newItem))
+  }
+}
+
+/*
+Delete
+*/
+
+function deleteItem(id) {
+  return {
+    type: DELETE_ITEM,
+    id
+  }
+}
+
+export function deleteItemFromBasket(id) {
+  return (dispatch) => {
+    return dispatch(deleteItem(id))
   }
 }
 

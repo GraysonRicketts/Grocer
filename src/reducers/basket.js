@@ -3,7 +3,8 @@ import {
   RECEIVE_ITEMS,
   REQUEST_ITEMS,
   UPDATE_ITEM,
-  ADD_ITEM
+  ADD_ITEM,
+  DELETE_ITEM
 } from '../actions/itemActions'
 
 export default function basket (state = { isFetching: false, items: [] }, action) {
@@ -47,6 +48,13 @@ export default function basket (state = { isFetching: false, items: [] }, action
       return {
         ...state,
         items: state.items.concat(action.newItem)
+      }
+    case DELETE_ITEM:
+      return {
+        ...state,
+        items: state.items.filter((item) => {
+          return item.id !== action.id
+        })
       }
     default:
       return state
