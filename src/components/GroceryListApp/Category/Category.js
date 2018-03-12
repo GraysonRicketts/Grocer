@@ -13,7 +13,9 @@ export default class Category extends Component {
         </h3>
 
         {
-          items ? items.map((item) => {
+          items ? items.sort((item) =>{
+            return item.checkedOff ? 1 : 0
+          }).map((item) => {
             return (
               <Item 
                 key={item.id}

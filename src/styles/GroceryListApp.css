@@ -24,7 +24,7 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-input, textarea {
+input, textarea, select {
   font-size: 16px;
 }
 
@@ -145,7 +145,7 @@ input, textarea {
   vertical-align: top;
 }
 
-.itemEditor input,textarea {
+.itemEditor input,textarea,select {
   width: 65%;
   border: 1px solid var(--border-color);
   border-radius: 3px;
@@ -165,27 +165,6 @@ input, textarea {
   margin: 0 10px 0 0;
   border: 2px solid black;
   border-radius: 5px;
-}
-
-.check > input {
-  display: none;
-}
-
-.check > .box {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.check > .box:after {
-  content: '';
-}
-
-.check > input:checked + .box:after {
-  font-family: FontAwesome;
-  content: '\f00c';
 }
 
 /* 

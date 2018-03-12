@@ -31,6 +31,7 @@ class Item extends Component {
 
   render() {
     const { id, name, number, size, note, category, checkedOff } = this.props.item
+    const checkedStyle = checkedOff ? null : 'hidden'
 
     return (
       <div className='itemRow' >
@@ -61,12 +62,10 @@ class Item extends Component {
             {number}
           </div>
 
-          <div className="activeIndicator">
-            <label className='check'>
-              <input type="checkbox" className="checkbox" 
-              onClick={this.handleToggle}/>
-              <div className="box"></div>
-            </label>
+          <div className="activeIndicator" onClick={this.handleToggle}>
+            <div style={{visibility: checkedStyle}}>
+              <i className="fas fa-check" />
+            </div>
           </div>
         </div>
 
