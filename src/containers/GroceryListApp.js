@@ -7,8 +7,27 @@ import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 
 class GroceryList extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      showChecked: true
+    }
+
+    this.handleShowCheckedToggle = this.handleShowCheckedToggle.bind(this)
+  }
+
   componentDidMount() {
     this.props.fetchItemsIfNeeded('any')
+  }
+
+  handleShowCheckedToggle() {
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        showChecked: !prevState.showChecked
+      }
+    })
   }
 
   render() {
@@ -21,17 +40,57 @@ class GroceryList extends Component {
         <div className="groceryList">
           <Search addItemToBasket={addItemToBasket}/>
 
-          {Object.keys(categories).sort().map(name => (
-            <Category
-            key={categories[name].id}
-            name={name}
-            items={categories[name].items} />
-          ))}
+          {categories ? this.makeList(categories) : this.showBlankBasket()}
         </div>
 
         <Footer />
       </div>
     )
+  }
+
+  makeList(categories) {
+    const buttonStyle = {
+      fontSize: '.7rem',
+      backgroundColor: 'white',
+      padding: '3px',
+      borderRadius: '2px'
+    }
+
+    return (
+      <div>
+        {Object.keys(categories).sort().map((name) => {
+          let categoryItems = categories[name].items
+          if (!this.state.showChecked) {
+            categoryItems = categoryItems.filter((item) => {
+              return !item.checkedOff
+            })
+
+            if (!categoryItems) {
+              return null
+            }
+          }
+
+          return (
+            <Category
+              key={categories[name].id}
+              name={name}
+              items={categoryItems}
+            />
+          )
+        })}
+
+        <div style={{textAlign: 'center', marginBottom: '25px'}}>
+          <input type='button' name="showChecked" 
+          onClick={this.handleShowCheckedToggle}
+          value={(this.state.showChecked ? 'Hide' : 'Show') + ' checked items'}
+          style={buttonStyle}/>
+        </div>
+      </div>
+    )
+  }
+
+  showBlankBasket() {
+    return null
   }
 }
 
