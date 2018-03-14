@@ -65,13 +65,9 @@ class GroceryList extends Component {
             categoryItems = categoryItems.filter((item) => {
               return !item.checkedOff
             })
-
-            if (!categoryItems) {
-              return null
-            }
           }
 
-          return (
+          return categoryItems.length === 0 ? null : (
             <Category
               key={categories[name].id}
               name={name}
