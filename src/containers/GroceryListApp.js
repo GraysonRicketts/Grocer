@@ -40,7 +40,8 @@ class GroceryList extends Component {
         <div className="groceryList">
           <Search addItemToBasket={addItemToBasket}/>
 
-          {categories ? this.makeList(categories) : this.showBlankBasket()}
+          {Object.keys(categories).length > 0 ?
+            this.makeList(categories) : this.showBlankBasket()}
         </div>
 
         <Footer />
