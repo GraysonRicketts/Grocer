@@ -79,7 +79,12 @@ class GroceryList extends Component {
           )
         })}
 
-        <div style={{textAlign: 'center', marginBottom: '25px'}}>
+        <div style={{
+              position: 'absolute',
+              bottom: 35,
+              textAlign: 'center',
+              left: 0, right: 0
+            }}>
           <input type='button' name="showChecked" 
           onClick={this.handleShowCheckedToggle}
           value={(this.state.showChecked ? 'Hide' : 'Show') + ' checked items'}
