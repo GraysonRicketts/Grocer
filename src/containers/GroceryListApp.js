@@ -17,9 +17,9 @@ class GroceryList extends Component {
     this.handleShowCheckedToggle = this.handleShowCheckedToggle.bind(this)
   }
 
-  componentDidMount() {
-    this.props.fetchItemsIfNeeded('any')
-  }
+  // componentDidMount() {
+  //   this.props.fetchItemsIfNeeded('any')
+  // }
 
   handleShowCheckedToggle() {
     this.setState((prevState) => {
