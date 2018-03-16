@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { fetchItemsIfNeeded, addItemToBasket } from '../actions/itemActions'
-import Search from './../components/GroceryListApp/Search/Search';
-import Category from './../components/GroceryListApp/Category/Category';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
+import { fetchItemsIfNeeded, addItemToBasket } from '../../../actions/itemActions'
+import Search from './../Search/Search';
+import Category from './../Category/Category';
+import Header from '../../Header/Header';
+import Footer from '../../Footer/Footer';
 
 class GroceryList extends Component {
   constructor(props) {

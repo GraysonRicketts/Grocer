@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Item from './../../../containers/Item';
+import Item from './../ItemContainer/Item';
 
 
 export default class Category extends Component {

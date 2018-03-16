@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ItemEditor from './../components/GroceryListApp/ItemEditor/ItemEditor';
+import ItemEditor from './../ItemEditor/ItemEditor';
 import { connect } from 'react-redux'
-import { toggleItem, updateItemIfNeeded, deleteItemFromBasket } from '../actions/itemActions'
+import { toggleItem, updateItemIfNeeded, deleteItemFromBasket } from './../../../actions/itemActions'
 
 class Item extends Component {
   constructor(props) {
