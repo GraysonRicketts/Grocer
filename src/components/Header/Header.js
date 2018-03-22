@@ -1,7 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { logout } from './../../actions/userActions'
 
 class Header extends Component {
+  constructor(props) {
+    super(props)
+
+    this.onLogoutClicked = this.onLogoutClicked.bind(this)
+  }
+
+  onLogoutClicked() {
+    const { logout, isLoggedIn } = this.props
+    if (!isLoggedIn) {
+      return
+    }
+
+    logout()
+  }
+
   render() {
     const { isLoggedIn, email } = this.props
     return (
@@ -13,13 +29,17 @@ class Header extends Component {
             <li><a href="/basket">Basket</a></li>
             {isLoggedIn ? <li><a href="/account">Account</a></li> :
               <li><a href="/signup">Sign up</a></li> }
-            {isLoggedIn ? <li><a href="/logout">Logout</a></li> :
+            {isLoggedIn ? <li onClick={this.onLogoutClicked}><a href='/'>Logout</a></li> :
               <li><a href="/login">Login</a></li> }
           </ul>
         </nav>
       </div>
     )
   }
+}
+
+const mapDispatchToProps = {
+  logout
 }
 
 function mapStateToProps(state) {
@@ -30,5 +50,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Header)

@@ -2,6 +2,7 @@ export const REQUEST_LOGIN = 'REQUEST_LOGIN'
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
 export const REQUEST_SIGNUP = 'REQUEST_SIGNUP'
 export const RECEIVE_SIGNUP = 'RECEIVE_SIGNUP'
+export const LOGOUT = 'LOGOUT'
 
 /*
 Login
@@ -47,9 +48,7 @@ function receiveSignup(email, success) {
 
 function requestSignup(email, password) {
   return {
-    type: REQUEST_SIGNUP,
-    email,
-    password
+    type: REQUEST_SIGNUP
   }
 }
 
@@ -61,5 +60,15 @@ export function signup(email, password) {
       dispatch(receiveSignup(email, true))
       dispatch(receiveLogin(email, true))
     }, 1000)
+  }
+}
+
+/*
+Logout
+*/
+
+export function logout() {
+  return {
+    type: LOGOUT
   }
 }
