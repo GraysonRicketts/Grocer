@@ -11,8 +11,10 @@ class Header extends Component {
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/basket">Basket</a></li>
-            <li><a href="/account">Account</a></li>
-            <li><a href="/login">Login</a></li>
+            {isLoggedIn ? <li><a href="/account">Account</a></li> :
+              <li><a href="/signup">Sign up</a></li> }
+            {isLoggedIn ? <li><a href="/logout">Logout</a></li> :
+              <li><a href="/login">Login</a></li> }
           </ul>
         </nav>
       </div>
