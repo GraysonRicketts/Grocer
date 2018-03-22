@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-const Header = () => (
-  <div className="header">
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/basket">Basket</a></li>
-        <li><a href="/account">Account</a></li>
-        <li><a href="/login">Login</a></li>
-      </ul>
-    </nav>
-  </div>
-)
+class Header extends Component {
+  render() {
+    const { isLoggedIn, email } = this.props
+    return (
+      <div className="header">
+        {isLoggedIn ? email : null}
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/basket">Basket</a></li>
+            <li><a href="/account">Account</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+    )
+  }
+}
 
-export default Header;
+export default Header

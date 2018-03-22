@@ -1,5 +1,3 @@
-import json from './../data/data'
-
 export const TOGGLE_ITEM = 'TOGGLE_ITEM'
 export const RECEIVE_ITEMS = 'RECEIVE_ITEMS'
 export const REQUEST_ITEMS = 'REQUEST_ITEMS'
@@ -34,7 +32,7 @@ function fetchBasket(basket) {
     
     // TODO: call to API
     return setTimeout(() => {
-        dispatch(receiveBasket(basket, json))
+        dispatch(receiveBasket(basket, null))
       }, 1000)
   }
 }
