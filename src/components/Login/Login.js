@@ -10,8 +10,8 @@ class Login extends Component {
     super(props)
 
     this.state = {
-      email: null,
-      password: null
+      email: '',
+      password: ''
     }
 
     this.handleLogin = this.handleLogin.bind(this)
@@ -49,12 +49,12 @@ class Login extends Component {
               <div className="standardInput">
                 <div>
                   <label>Email</label>
-                  <input name='email' value={email ? email : ''} type="text" onChange={this.handleEmailChange}/>
+                  <input name='email' value={email} type="text" onChange={this.handleEmailChange}/>
                 </div>
 
                 <div>
                   <label>Password</label>
-                  <input name='password' value={password ? password : ''} type="password" onChange={this.handlePasswordChange}/>
+                  <input name='password' value={password} type="password" onChange={this.handlePasswordChange}/>
                 </div>
 
                 <div className='loginButton'>
