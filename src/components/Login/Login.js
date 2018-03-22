@@ -10,8 +10,8 @@ class Login extends Component {
     super(props)
 
     this.state = {
-      clientEmail: null,
-      clientPassword: null
+      email: null,
+      password: null
     }
 
     this.handleLogin = this.handleLogin.bind(this)
@@ -21,45 +21,44 @@ class Login extends Component {
 
   handleLogin(event) {
     const { login } = this.props
-    const email = this.state.clientEmail
-    const password = this.state.clientPassword
+    const email = this.state.email
+    const password = this.state.password
     
     login(email, password)
   }
 
   handleEmailChange(event) {
-    const clientEmail = event.target.value
-    this.setState({clientEmail})
+    const email = event.target.value
+    this.setState({email})
   }
 
   handlePasswordChange(event) {
-    const clientPassword = event.target.value
-    this.setState({clientPassword})
+    const password = event.target.value
+    this.setState({password})
   }
 
   render() {
-    const { clientEmail, clientPassword } = this.state
-    const { email: storeEmail, isLoggedIn } = this.props
+    const { email, password } = this.state
     return (
       <div className="wrapper">
-        <Header title={'Login'} email={storeEmail} isLoggedIn={isLoggedIn}/>
+        <Header />
 
           <div className='login'>
-            <form>
+            <form onSubmit={this.handleLogin}>
 
               <div className="standardInput">
                 <div>
                   <label>Email</label>
-                  <input name='email' value={clientEmail ? clientEmail : ''} type="text" onChange={this.handleEmailChange}/>
+                  <input name='email' value={email ? email : ''} type="text" onChange={this.handleEmailChange}/>
                 </div>
 
                 <div>
                   <label>Password</label>
-                  <input name='password' value={clientPassword ? clientPassword : ''} type="password" onChange={this.handlePasswordChange}/>
+                  <input name='password' value={password ? password : ''} type="password" onChange={this.handlePasswordChange}/>
                 </div>
 
                 <div className='loginButton'>
-                  <input type="button" value="Login" onClick={this.handleLogin}/>
+                  <input type="submit" value="Login" onClick={this.handleLogin}/>
                   <div className="create">
                     <a href='/signup'><p>Create an account</p></a>
                   </div>
@@ -85,14 +84,7 @@ const mapDispatchToProps = {
   login
 }
 
-function mapStateToProps(state) {
-  return {
-    email: state.user.email,
-    isLoggedIn: state.user.isLoggedIn
-  }
-}
-
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Login)

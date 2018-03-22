@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 class Header extends Component {
   render() {
@@ -19,4 +20,13 @@ class Header extends Component {
   }
 }
 
-export default Header
+function mapStateToProps(state) {
+  return {
+    email: state.user.email,
+    isLoggedIn: state.user.isLoggedIn
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Header)
