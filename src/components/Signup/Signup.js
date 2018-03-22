@@ -19,12 +19,12 @@ class Signup extends Component {
     this.onInputChanged = this.onInputChanged.bind(this)
   }
 
-  onSubmit() {
+  onSubmit(event) {
     const { email, password, rePassword } = this.state
 
     if (password !== rePassword) {
       alert('Passwords don\'t match')
-      return
+      event.preventDefault()
     }
 
     this.props.signup(email, password)
@@ -33,7 +33,10 @@ class Signup extends Component {
   onInputChanged(event) {
     const stateProperty = event.target.name
     const input = event.target.value
-    this.setState({ stateProperty: input })
+
+    const newState = { ...this.state }
+    newState[stateProperty] = input
+    this.setState(newState)
   }
 
   render() {
