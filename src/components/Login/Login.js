@@ -23,6 +23,7 @@ class Login extends Component {
     const { login } = this.props
     const email = this.state.email
     const password = this.state.password
+    event.preventDefault()
     
     login(email, password)
   }

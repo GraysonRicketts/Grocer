@@ -1,3 +1,5 @@
+import fetch from 'cross-fetch'
+
 export const REQUEST_LOGIN = 'REQUEST_LOGIN'
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
 export const REQUEST_SIGNUP = 'REQUEST_SIGNUP'
@@ -8,10 +10,9 @@ export const LOGOUT = 'LOGOUT'
 Login
 */
 
-function receiveLogin(email, success, basket) {
+function receiveLogin(email, success) {
   return {
     type: RECEIVE_LOGIN,
-    basket,
     email,
     success
   }
@@ -24,13 +25,23 @@ function requestLogin(email, password) {
 }
 
 export function login(email, password) {
+  const url = '/login'
   return dispatch => {
     dispatch(requestLogin(email, password))
-    
-    // TODO: call to API
-    return setTimeout(() => {
-        dispatch(receiveLogin(email, true, null))
-      }, 1000)
+
+    const payload = { email, password }
+
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json"
+        },
+      })
+      .then(response => dispatch(receiveLogin(email, response.status === 200 ? true : false)))
+      .catch((err) => {
+        console.error(err)
+      })
   }
 }
 
