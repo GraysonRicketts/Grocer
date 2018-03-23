@@ -3,7 +3,7 @@ import {
   RECEIVE_LOGIN,
   REQUEST_SIGNUP,
   RECEIVE_SIGNUP,
-  LOGOUT
+  REQUEST_LOGOUT
 } from '../actions/userActions'
 
 export default function user(state = { isFetching: false, email: null, isLoggedIn: false}, action) {
@@ -33,7 +33,7 @@ export default function user(state = { isFetching: false, email: null, isLoggedI
         isLoggedIn: action.success,
         isFetching: false
       }
-    case LOGOUT:
+    case REQUEST_LOGOUT:
       return {
         ...state,
         email: null,

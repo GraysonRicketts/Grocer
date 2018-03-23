@@ -4,7 +4,7 @@ export const REQUEST_LOGIN = 'REQUEST_LOGIN'
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
 export const REQUEST_SIGNUP = 'REQUEST_SIGNUP'
 export const RECEIVE_SIGNUP = 'RECEIVE_SIGNUP'
-export const LOGOUT = 'LOGOUT'
+export const REQUEST_LOGOUT = 'REQUEST_LOGOUT'
 
 /*
 Login
@@ -25,10 +25,10 @@ function requestLogin(email, password) {
 }
 
 export function login(email, password) {
-  const url = '/login'
   return dispatch => {
     dispatch(requestLogin(email, password))
 
+    const url = '/login'
     const payload = { email, password }
 
     return fetch(url, {
@@ -78,8 +78,20 @@ export function signup(email, password) {
 Logout
 */
 
-export function logout() {
+function requestLogout() {
   return {
-    type: LOGOUT
+    type: REQUEST_LOGOUT
+  }
+}
+
+export function logout() {
+  return dispatch => {
+    dispatch(requestLogout())
+
+    const url = '/logout'
+    return fetch(url)
+      .catch((err) => {
+        console.error(err)
+      })
   }
 }
