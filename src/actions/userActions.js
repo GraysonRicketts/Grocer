@@ -10,11 +10,12 @@ export const REQUEST_LOGOUT = 'REQUEST_LOGOUT'
 Login
 */
 
-function receiveLogin(email, success) {
+function receiveLogin(email, success, baskets) {
   return {
     type: RECEIVE_LOGIN,
     email,
-    success
+    success,
+    baskets
   }
 }
 
@@ -38,7 +39,11 @@ export function login(email, password) {
           "Content-Type": "application/json"
         },
       })
-      .then(response => dispatch(receiveLogin(email, response.status === 200 ? true : false)))
+      .then(response => response.json())
+      .then(json => {
+        const { success, baskets } = json
+        dispatch(receiveLogin(email, success, baskets))
+      })
       .catch((err) => {
         console.error(err)
       })

@@ -18,7 +18,7 @@ export default function user(state = { isFetching: false, email: null, isLoggedI
         ...state,
         isFetching: false,
         email: action.email,
-        basket: action.basket,
+        baskets: action.baskets,
         isLoggedIn: action.success
       }
     case REQUEST_SIGNUP:
