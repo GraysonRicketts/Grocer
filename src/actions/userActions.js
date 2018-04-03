@@ -10,11 +10,12 @@ export const REQUEST_LOGOUT = 'REQUEST_LOGOUT'
 Login
 */
 
-function receiveLogin(email, success, baskets) {
+function receiveLogin(email, success, token, baskets) {
   return {
     type: RECEIVE_LOGIN,
-    email,
     success,
+    email,
+    token,
     baskets
   }
 }
@@ -29,7 +30,7 @@ export function login(email, password) {
   return dispatch => {
     dispatch(requestLogin(email, password))
 
-    const url = '/login'
+    const url = '/auth/login'
     const payload = { email, password }
 
     return fetch(url, {
@@ -41,8 +42,8 @@ export function login(email, password) {
       })
       .then(response => response.json())
       .then(json => {
-        const { success, baskets } = json
-        dispatch(receiveLogin(email, success, baskets))
+        const { success, token, baskets } = json
+        dispatch(receiveLogin(email, success, token, baskets))
       })
       .catch((err) => {
         console.error(err)
@@ -54,11 +55,13 @@ export function login(email, password) {
 Signup
 */
 
-function receiveSignup(email, success) {
+function receiveSignup(email, success, token, baskets) {
   return {
     type: RECEIVE_SIGNUP,
+    success,
     email,
-    success
+    token,
+    baskets
   }
 }
 
@@ -73,8 +76,7 @@ export function signup(email, password) {
     dispatch(requestSignup(email, password))
 
     return setTimeout(() => {
-      dispatch(receiveSignup(email, true))
-      dispatch(receiveLogin(email, true))
+      dispatch(receiveSignup(email, true, null, null))
     }, 1000)
   }
 }
