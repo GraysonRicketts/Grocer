@@ -1,4 +1,5 @@
 import fetch from 'cross-fetch'
+import { authenticateUser, deauthenticateUser } from './../utils/auth'
 
 export const REQUEST_LOGIN = 'REQUEST_LOGIN'
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
@@ -43,6 +44,12 @@ export function login(email, password) {
       .then(response => response.json())
       .then(json => {
         const { success, token, baskets } = json
+
+        if (!success) {
+          throw new Error('failed to login')
+        }
+
+        authenticateUser(token)
         dispatch(receiveLogin(email, success, token, baskets))
       })
       .catch((err) => {
@@ -94,8 +101,9 @@ function requestLogout() {
 export function logout() {
   return dispatch => {
     dispatch(requestLogout())
+    deauthenticateUser()
 
-    const url = '/logout'
+    const url = '/auth/logout'
     return fetch(url)
       .catch((err) => {
         console.error(err)

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { isUserAuthenticated } from './../../utils/auth'
 
 class Header extends Component {
   constructor(props) {
@@ -18,7 +19,8 @@ class Header extends Component {
   }
 
   render() {
-    const { isLoggedIn, email } = this.props
+    const { email } = this.props
+    const isLoggedIn = isUserAuthenticated()
     return (
       <div className="header">
         {isLoggedIn ? email : null}

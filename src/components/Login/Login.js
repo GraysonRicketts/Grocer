@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import './../../styles/Login.css'
 import Footer from './../Footer/Footer'
 import Header from './../Header/Header'
@@ -40,7 +41,12 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state
+    const { isLoggedIn, basket } = this.props
+
+    const basketUrl = '/basket/' + basket
+
     return (
+      isLoggedIn ? <Redirect to={basketUrl} /> :
       <div className="wrapper">
         <Header />
 
@@ -78,6 +84,13 @@ class Login extends Component {
         <Footer />
       </div>
     )
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.user.isLoggedIn,
+    basket: state.user.baskets[0]
   }
 }
 
