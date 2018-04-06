@@ -23,7 +23,7 @@ class Search extends React.Component {
     const newItem = {
       id,
       name: newItemName,
-      category: ' ',
+      category: 'Uncategorized',
       checkedOff: false
     }
     this.setState((prevState) => ({

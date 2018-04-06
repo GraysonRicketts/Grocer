@@ -4,5 +4,6 @@ export const CATEGORIES = [
   'Dry Goods / Pantry',
   'Dairy',
   'Frozen',
+  'Uncategorized',
   ' '
 ]
