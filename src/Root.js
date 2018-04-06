@@ -8,6 +8,7 @@ import Signup from './components/Signup/Signup'
 import Homepage from './components/Homepage/Homepage'
 import GroceryList from './components/GroceryList/GroceryListContainer/GroceryList'
 import Logout from './components/Logout/Logout'
+import PageNotFound from './components/404'
 
 const store = configureStore()
 
@@ -23,6 +24,7 @@ export default class Root extends Component {
             <Route path='/login' component={Login}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/logout' component={Logout}/>
+            <Route path='/**' component={PageNotFound}/>
           </Switch>
         </BrowserRouter>
       </Provider>
