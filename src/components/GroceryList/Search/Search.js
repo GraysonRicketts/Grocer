@@ -38,7 +38,7 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search">
-        <input type="text" placeholder={"Search"} onKeyPress={this.handleEnterPressed}/>
+        <input type="text" placeholder={"Add an item"} onKeyPress={this.handleEnterPressed}/>
       </div>
     );
   }
