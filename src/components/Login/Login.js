@@ -45,7 +45,7 @@ class Login extends Component {
 
     if (isUserAuthenticated()) {
       const basket = getBasketFromToken()
-      const loginRedirectURL = '/baskets/' + basket
+      const loginRedirectURL = '/basket/' + basket
       return (
         <Redirect to={loginRedirectURL} />
       )

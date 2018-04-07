@@ -20,7 +20,7 @@ export default class Root extends Component {
           <Switch>
             <Route exact path='/' component={Homepage}/>
             <Route path='/account' component={Account}/>
-            <Route path='/basket' component={GroceryList}/>
+            <Route path='/basket/**' component={GroceryList}/>
             <Route path='/login' component={Login}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/logout' component={Logout}/>
