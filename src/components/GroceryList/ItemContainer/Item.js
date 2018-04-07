@@ -13,6 +13,7 @@ class Item extends Component {
 
     this.handleRowOnClick = this.handleRowOnClick.bind(this)
     this.handleToggle = this.handleToggle.bind(this)
+    this.closeEditor = this.closeEditor.bind(this)
   }
 
   handleRowOnClick() {
@@ -27,6 +28,15 @@ class Item extends Component {
   handleToggle() {
     const { toggleItem, id } = this.props
     toggleItem(id)
+  }
+
+  closeEditor() {
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        expanded: false
+      }
+    })
   }
 
   render() {
@@ -79,8 +89,9 @@ class Item extends Component {
               size={size}
               category={category}
               note={note}
-              onChange={this.props.updateItemIfNeeded}
-              onDelete={this.props.deleteItemFromBasket}/>
+              updateItem={this.props.updateItemIfNeeded}
+              deleteItem={this.props.deleteItemFromBasket}
+              closeEditor={this.closeEditor}/>
             </div>
           ) : null
         }

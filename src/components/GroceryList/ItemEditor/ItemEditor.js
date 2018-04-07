@@ -7,24 +7,39 @@ export default class ItemEditor extends Component {
 
     this.handleOnChange = this.handleOnChange.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.handleSaveClicked = this.handleSaveClicked.bind(this)
   }
 
   handleDelete() {
-    const { onDelete, id } = this.props
+    const { deleteItem, id } = this.props
 
-    onDelete(id)
+    deleteItem(id)
   }
 
   handleOnChange(event) {
-    const { onChange, id } = this.props
+    const { updateItem, id } = this.props
     const key = event.target.name
     const value = event.target.value
 
-    onChange(id, {[key]: value})
+    updateItem(id, {[key]: value})
+  }
+
+  handleSaveClicked(event) {
+    const { closeEditor, updateItem, id, name, number, size, category, note } = this.props
+
+    updateItem(id, {name, number, size, category, note})
+    closeEditor()
   }
 
   render() {
     const { name, number, size, category, note } = this.props
+    const saveButtonStyle = {
+      color: 'green', 
+      display: 'inline-block'
+    }
+    const buttonIconStyle = { ...saveButtonStyle, width: '1rem', height: '1rem'}
+    const textIconStyle = { ...saveButtonStyle, fontSize: '1.2rem', margin: 0, float: 'right'}
+
     return (
       <div className='itemEditor'>
         <div>
@@ -65,9 +80,15 @@ export default class ItemEditor extends Component {
           <label htmlFor="note">Note</label>
           <textarea name={"note"}onChange={this.handleOnChange} value={note} />
         </div>
-        <div>
+        <div style={{display: 'flex', justifyContent: 'space-between'}}>
           <button onClick={this.handleDelete}>
             <i className='far fa-trash-alt' style={{color: 'red', width: '1rem', height: '1rem'}}/>
+          </button>
+
+          <button onClick={this.handleSaveClicked}
+          style={{border: '1px solid green', borderRadius: '5px', background: 'none'}}>
+            <i class="far fa-save" style={buttonIconStyle}></i>
+            <p style={textIconStyle}>Save</p>
           </button>
         </div>
       </div>
