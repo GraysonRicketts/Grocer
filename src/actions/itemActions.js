@@ -53,7 +53,7 @@ export function fetchItemsIfNeeded(basket) {
 Update
 */
 
-function updateItem(id, update) {
+export function updateItem(id, update) {
   return {
     type: UPDATE_ITEM,
     id,
@@ -61,13 +61,13 @@ function updateItem(id, update) {
   }
 }
 
-function shouldUpdateItem(state) {
+function shouldSaveItem(state) {
   return true
 }
 
-export function updateItemIfNeeded(id, update) {
+export function saveItemIfNeeded(id, update) {
   return (dispatch, getState) => {
-    if (shouldUpdateItem(getState())) {
+    if (shouldSaveItem(getState())) {
       return dispatch(updateItem(id, update))
     }
   }

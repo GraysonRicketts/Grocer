@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ItemEditor from './../ItemEditor/ItemEditor';
 import { connect } from 'react-redux'
-import { toggleItem, updateItemIfNeeded, deleteItemFromBasket } from './../../../actions/itemActions'
+import { toggleItem, saveItemIfNeeded, updateItem, deleteItemFromBasket } from './../../../actions/itemActions'
 
 class Item extends Component {
   constructor(props) {
@@ -89,7 +89,8 @@ class Item extends Component {
               size={size}
               category={category}
               note={note}
-              updateItem={this.props.updateItemIfNeeded}
+              updateItem={this.props.updateItem}
+              saveItem={this.props.saveItemIfNeeded}
               deleteItem={this.props.deleteItemFromBasket}
               closeEditor={this.closeEditor}/>
             </div>
@@ -103,7 +104,8 @@ class Item extends Component {
 
 const mapDispatchToProps = {
   toggleItem,
-  updateItemIfNeeded,
+  saveItemIfNeeded,
+  updateItem,
   deleteItemFromBasket
 }
 
