@@ -1,3 +1,5 @@
+import jwt from 'jsonwebtoken'
+
 /**
  * Authenticate a user. Save a token string in Local Storage
  *
@@ -31,4 +33,18 @@ export function deauthenticateUser() {
  */
 export function getToken() {
   return localStorage.getItem('token')
+}
+
+/**
+ * Get a basket from token.
+ *
+ * @returns {string}
+ */
+export function getBasketFromToken() {
+  let token = getToken()
+  token = jwt.decode(token)
+
+  const basket = token.data
+
+  return basket
 }

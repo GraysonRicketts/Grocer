@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './../../styles/Login.css'
 import Footer from './../Footer/Footer'
 import Header from './../Header/Header'
 import { login } from './../../actions/userActions'
+import { isUserAuthenticated, getBasketFromToken } from './../../utils/auth'
 
 class Login extends Component {
   constructor(props) {
@@ -40,6 +42,14 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state
+
+    if (isUserAuthenticated()) {
+      const basket = getBasketFromToken()
+      const loginRedirectURL = '/baskets/' + basket
+      return (
+        <Redirect to={loginRedirectURL} />
+      )
+    }
 
     return (
       <div className="wrapper">
