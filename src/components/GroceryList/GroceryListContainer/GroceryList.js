@@ -5,16 +5,25 @@ import Search from './../Search/Search';
 import Category from './../Category/Category';
 import Header from '../../Header/Header';
 import Footer from '../../Footer/Footer';
+import { getBasketFromToken } from '../../../utils/auth';
 
 class GroceryList extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      showChecked: true
+      showChecked: true,
+      basket: getBasketFromToken()
     }
 
     this.handleShowCheckedToggle = this.handleShowCheckedToggle.bind(this)
+  }
+  
+  componentDidMount() {
+    const { fetchItemsIfNeeded } = this.props
+    const { basket }  = this.state
+
+    fetchItemsIfNeeded(basket)
   }
 
   // componentDidMount() {

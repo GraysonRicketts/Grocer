@@ -1,3 +1,5 @@
+import { getBasketFromToken, getToken } from "../utils/auth";
+
 export const TOGGLE_ITEM = 'TOGGLE_ITEM'
 export const RECEIVE_ITEMS = 'RECEIVE_ITEMS'
 export const REQUEST_ITEMS = 'REQUEST_ITEMS'
@@ -29,11 +31,28 @@ function requestBasket(basket) {
 function fetchBasket(basket) {
   return dispatch => {
     dispatch(requestBasket(basket))
+
+    const basketId = getBasketFromToken()
+    const url = '/api/basket/' + basketId
     
-    // TODO: call to API
-    return setTimeout(() => {
-        dispatch(receiveBasket(basket, null))
-      }, 1000)
+    const token = getToken()
+    
+    return fetch(url, {
+        method: 'GET',
+        headers: new Headers({
+          'Authorization': 'Bearer ' + token
+        }),
+      }, )
+      .then(response => response.json())
+      .then(json => {
+        const { success, basket } = json
+
+        if (!success) {
+          throw new Error('failed to get basket')
+        }
+
+        dispatch(receiveBasket(basketId, basket))
+      })
   }
 }
 
