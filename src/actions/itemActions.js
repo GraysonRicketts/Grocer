@@ -62,7 +62,7 @@ function fetchBasket(basket) {
         const { success, basket } = json
 
         if (!success) {
-          throw new Error('failed to get basket')
+          return
         }
 
         dispatch(receiveBasket(basketId, basket))
@@ -99,7 +99,7 @@ export function saveItemIfNeeded(id, update) {
     const state = getState()
     const updatedItem = {
       ...update,
-      _id: getState().basket.items[id]._id
+      _id: state.basket.items[id]._id
     }
 
     const payload = {
@@ -109,15 +109,15 @@ export function saveItemIfNeeded(id, update) {
     }
 
     return fetchAPI('PUT', payload)
-    .then(json => {
-      const { success } = json
+      .then(json => {
+        const { success } = json
 
-      if (!success) {
-        throw new Error('failed to update basket')
-      }
+        if (!success) {
+          throw new Error('failed to update basket')
+        }
 
-      dispatch(updateItem(update._id, update))
-    })
+        dispatch(updateItem(update._id, update))
+      })
   }
 }
 
@@ -165,8 +165,28 @@ function deleteItem(id) {
 }
 
 export function deleteItemFromBasket(id) {
-  return (dispatch) => {
-    return dispatch(deleteItem(id))
+  return (dispatch, getState) => {
+    const state = getState()
+    const deletedItem = {
+      _id: state.basket.items[id]._id
+    }
+
+    const payload = {
+      delta: {
+        deletedItems: [ deletedItem ]
+      }
+    }
+
+    return fetchAPI('DELETE', payload)
+      .then(json => {
+        const { success } = json
+
+        if (!success) {
+          throw new Error('failed to delete basket')
+        }
+
+        dispatch(deleteItem(id))
+      })
   }
 }
 

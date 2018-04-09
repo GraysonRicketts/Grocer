@@ -7,6 +7,7 @@ import Category from './../Category/Category'
 import Header from '../../Header/Header'
 import Footer from '../../Footer/Footer'
 import { getBasketFromToken } from '../../../utils/auth'
+import { isUserAuthenticated } from './../../../utils/auth'
 
 class GroceryList extends Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class GroceryList extends Component {
   }
 
   render() {
-    if (!this.state.requestFulfilled) {
+    if (!this.state.requestFulfilled || !isUserAuthenticated()) {
       return <Redirect to={'/login'} />
     }
 
