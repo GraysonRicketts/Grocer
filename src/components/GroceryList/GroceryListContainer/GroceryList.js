@@ -113,16 +113,17 @@ class GroceryList extends Component {
 }
 
 const getCategories = (items) => {
-  let categories = {};
-  let id = 0
+  let categories = {}
+  let categoryId = 0
+  let itemId = 0
 
   if (items.length > 0) {
     items.forEach((item) => {
       const categoryName = item.category
-      item.id = id++
+      item.id = itemId++
 
       if (!categories[categoryName]) {
-        categories[item.category] = { id: id++, items: []}
+        categories[item.category] = { id: categoryId++, items: []}
       }
 
       categories[categoryName].items.push(item);

@@ -22,7 +22,7 @@ function getItemsFromBasketResponse(json) {
 
     return {
       _id,
-      name: item.itemDef.title,
+      name: item.itemDef.name,
       category: item.itemDef.category,
       number,
       size,
@@ -134,26 +134,13 @@ function addItem(newItem) {
 
 export function addItemToBasket(newItem) {
   return (dispatch) => {
-    const token = getToken()
-    const basket = getBasketFromToken(token)
-
     const payload = {
       delta: {
         newItems: [ newItem ]
       }
     }
-
-    const url = '/api/basket/' + basket
     
-    return fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(payload),
-        headers: new Headers({
-          'Authorization': 'Bearer ' + token,
-          'Content-Type': 'application/json'
-        }),
-      })
-      .then(response => response.json())
+    return fetchAPI('POST', payload)
       .then(json => {
         const { success } = json
 
