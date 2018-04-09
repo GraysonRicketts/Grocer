@@ -6,7 +6,7 @@ import {
   REQUEST_LOGOUT
 } from '../actions/userActions'
 
-export default function user(state = { isFetching: false, email: null, isLoggedIn: false}, action) {
+export default function user(state = { isFetching: false, email: null, loginFailed: false}, action) {
   switch(action.type) {
     case REQUEST_LOGIN:
       return {
@@ -19,7 +19,7 @@ export default function user(state = { isFetching: false, email: null, isLoggedI
         isFetching: false,
         email: action.email,
         baskets: action.baskets,
-        isLoggedIn: action.success
+        loginFailed: !action.success
       }
     case REQUEST_SIGNUP:
       return {
@@ -30,7 +30,7 @@ export default function user(state = { isFetching: false, email: null, isLoggedI
       return {
         ...state,
         email: action.email,
-        isLoggedIn: action.success,
+        loginFailed: !action.success,
         isFetching: false
       }
     case REQUEST_LOGOUT:

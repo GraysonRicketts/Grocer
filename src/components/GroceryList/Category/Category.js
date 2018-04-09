@@ -4,7 +4,7 @@ import Item from './../ItemContainer/Item';
 
 export default class Category extends Component {
   render() {
-    const { name, items} = this.props
+    const { name, items } = this.props
 
     return (
       <div className='category'>

@@ -24,7 +24,7 @@ export default class Root extends Component {
             <Route path='/login' component={Login}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/logout' component={Logout}/>
-            <Route path='/**' component={PageNotFound}/>
+            <Route component={PageNotFound}/>
           </Switch>
         </BrowserRouter>
       </Provider>

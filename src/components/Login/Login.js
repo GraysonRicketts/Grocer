@@ -26,7 +26,7 @@ class Login extends Component {
     const email = this.state.email
     const password = this.state.password
     event.preventDefault()
-    
+
     login(email, password)
   }
 
@@ -42,6 +42,7 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state
+    const { loginFailed } = this.props
 
     if (isUserAuthenticated()) {
       const basket = getBasketFromToken()
@@ -69,6 +70,11 @@ class Login extends Component {
                   <input name='password' value={password} type="password" onChange={this.handlePasswordChange}/>
                 </div>
 
+                { loginFailed ?
+                (<div>
+                  <p style={{color:'red'}}>Login attempt failed</p>
+                </div>) : null}
+
                 <div className='loginButton'>
                   <input type="submit" value="Login" />
                   <div className="create">
@@ -92,11 +98,17 @@ class Login extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    loginFailed: state.user.loginFailed
+  }
+}
+
 const mapDispatchToProps = {
   login
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Login)

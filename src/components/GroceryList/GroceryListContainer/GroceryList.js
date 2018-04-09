@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { fetchItemsIfNeeded, addItemToBasket } from '../../../actions/itemActions'
-import Search from './../Search/Search';
-import Category from './../Category/Category';
-import Header from '../../Header/Header';
-import Footer from '../../Footer/Footer';
-import { getBasketFromToken } from '../../../utils/auth';
+import Search from './../Search/Search'
+import Category from './../Category/Category'
+import Header from '../../Header/Header'
+import Footer from '../../Footer/Footer'
+import { getBasketFromToken } from '../../../utils/auth'
 
 class GroceryList extends Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class GroceryList extends Component {
 
     this.state = {
       showChecked: true,
-      basket: getBasketFromToken()
+      basket: getBasketFromToken(),
+      requestFulfilled: true
     }
 
     this.handleShowCheckedToggle = this.handleShowCheckedToggle.bind(this)
@@ -23,12 +25,13 @@ class GroceryList extends Component {
     const { fetchItemsIfNeeded } = this.props
     const { basket }  = this.state
 
-    fetchItemsIfNeeded(basket)
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        requestFulfilled: fetchItemsIfNeeded(basket)
+      }
+    })
   }
-
-  // componentDidMount() {
-  //   this.props.fetchItemsIfNeeded('any')
-  // }
 
   handleShowCheckedToggle() {
     this.setState((prevState) => {
@@ -40,6 +43,10 @@ class GroceryList extends Component {
   }
 
   render() {
+    if (!this.state.requestFulfilled) {
+      return <Redirect to={'/login'} />
+    }
+
     const { categories, addItemToBasket } = this.props
     return (
       <div>
@@ -112,6 +119,7 @@ const getCategories = (items) => {
   if (items.length > 0) {
     items.forEach((item) => {
       const categoryName = item.category
+      item.id = id++
 
       if (!categories[categoryName]) {
         categories[item.category] = { id: id++, items: []}

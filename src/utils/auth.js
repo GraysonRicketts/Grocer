@@ -15,7 +15,19 @@ export function authenticateUser(token) {
  * @returns {boolean}
  */
 export function isUserAuthenticated() {
-  return localStorage.getItem('token') !== null
+  if (localStorage.getItem('token') === null) {
+    return false
+  }
+
+  const token = getToken()
+  const decodedToken = jwt.decode(token)
+  const timeNow = new Date().getTime()
+  if (decodedToken.exp > timeNow) {
+    deauthenticateUser()
+    return false
+  }
+
+  return true
 }
 
 /**
@@ -40,11 +52,13 @@ export function getToken() {
  *
  * @returns {string}
  */
-export function getBasketFromToken() {
-  let token = getToken()
+export function getBasketFromToken(token) {
   token = jwt.decode(token)
 
-  const basket = token.data
+  if (!token || !token.data) {
+    return null
+  }
 
+  const basket = token.data
   return basket
 }

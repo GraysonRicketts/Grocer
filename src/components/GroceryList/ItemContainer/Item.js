@@ -40,7 +40,8 @@ class Item extends Component {
   }
 
   render() {
-    const { id, name, number, size, note, category, checkedOff } = this.props.item
+    const { name, number, size, note, category, checkedOff } = this.props.item
+    const { id } = this.props
     const checkedStyle = checkedOff ? null : 'hidden'
 
     return (
@@ -111,11 +112,10 @@ const mapDispatchToProps = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    item: state.basket.items.find((item) => { 
-      return item.id === ownProps.id
-    })
+    item: state.basket.items[ownProps.id]
   }
 }
+
 
 export default connect(
   mapStateToProps,

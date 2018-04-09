@@ -12,11 +12,33 @@ export const DELETE_ITEM = 'DELETE_ITEM'
 Fetch
 */
 
+function getItemsFromBasketResponse(json) {
+  if (!json || !json.items) {
+    return null
+  }
+
+  const items = json.items.map((item) => {
+  const { _id, number, size, note } = item
+
+    return {
+      _id,
+      name: item.itemDef.title,
+      category: item.itemDef.category,
+      number,
+      size,
+      note
+    }
+  })
+
+  return items
+}
+
 function receiveBasket(basket, json) {
+  const items = getItemsFromBasketResponse(json)
   return {
     type: RECEIVE_ITEMS,
     basket,
-    items: json.items,
+    items,
     receivedAt: Date.now()
   }
 }
@@ -32,18 +54,10 @@ function fetchBasket(basket) {
   return dispatch => {
     dispatch(requestBasket(basket))
 
-    const basketId = getBasketFromToken()
-    const url = '/api/basket/' + basketId
-    
     const token = getToken()
-    
-    return fetch(url, {
-        method: 'GET',
-        headers: new Headers({
-          'Authorization': 'Bearer ' + token
-        }),
-      }, )
-      .then(response => response.json())
+    const basketId = getBasketFromToken(token)
+
+    return fetchAPI('GET')
       .then(json => {
         const { success, basket } = json
 
@@ -80,15 +94,30 @@ export function updateItem(id, update) {
   }
 }
 
-function shouldSaveItem(state) {
-  return true
-}
-
 export function saveItemIfNeeded(id, update) {
   return (dispatch, getState) => {
-    if (shouldSaveItem(getState())) {
-      return dispatch(updateItem(id, update))
+    const state = getState()
+    const updatedItem = {
+      ...update,
+      _id: getState().basket.items[id]._id
     }
+
+    const payload = {
+      delta: {
+        modItems: [ updatedItem ]
+      }
+    }
+
+    return fetchAPI('PUT', payload)
+    .then(json => {
+      const { success } = json
+
+      if (!success) {
+        throw new Error('failed to update basket')
+      }
+
+      dispatch(updateItem(update._id, update))
+    })
   }
 }
 
@@ -105,7 +134,35 @@ function addItem(newItem) {
 
 export function addItemToBasket(newItem) {
   return (dispatch) => {
-    return dispatch(addItem(newItem))
+    const token = getToken()
+    const basket = getBasketFromToken(token)
+
+    const payload = {
+      delta: {
+        newItems: [ newItem ]
+      }
+    }
+
+    const url = '/api/basket/' + basket
+    
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: new Headers({
+          'Authorization': 'Bearer ' + token,
+          'Content-Type': 'application/json'
+        }),
+      })
+      .then(response => response.json())
+      .then(json => {
+        const { success } = json
+
+        if (!success) {
+          throw new Error('failed to add to basket')
+        }
+
+        dispatch(addItem(newItem))
+      })
   }
 }
 
@@ -132,4 +189,58 @@ Toggle
 
 export function toggleItem(id) {
   return { type: TOGGLE_ITEM, id }
+}
+
+/*
+Fetch 
+*/
+
+function fetchAPI(method, payload) {
+  const token = getToken()
+  const basket = getBasketFromToken(token)
+  const url = '/api/basket/' + basket
+
+  let request = {
+    method,
+    headers: {
+      'Authorization': 'Bearer ' + token
+    }
+  }
+
+  if (payload) {
+    request = {
+      ...request,
+      body: JSON.stringify(payload),
+      headers: {
+        ...request.headers,
+        'Content-Type': 'application/json'
+      }
+    }
+  }
+
+  return fetch(url, request)
+    .then(response => {
+      if (response.status >= 400) {
+        throw new BadResponseError(response.status)
+      }
+
+      return response.json()
+    })
+    .catch((err) => {
+      if (err.status === 401) {
+        return false
+      }
+    })
+}
+
+class BadResponseError extends Error {
+  constructor(status, ...params) {
+    super(...params)
+
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, BadResponseError)
+    }
+
+    this.status = status
+  }
 }
