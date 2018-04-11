@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { isUserAuthenticated } from './../../utils/auth'
 
 class Header extends Component {
@@ -19,11 +18,9 @@ class Header extends Component {
   }
 
   render() {
-    const { email } = this.props
     const isLoggedIn = isUserAuthenticated()
     return (
       <div className="header">
-        {isLoggedIn ? email : null}
         <nav>
           <ul>
             <li><a href="/">Home</a></li>
@@ -39,13 +36,4 @@ class Header extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    email: state.user.email,
-    isLoggedIn: state.user.isLoggedIn
-  }
-}
-
-export default connect(
-  mapStateToProps
-)(Header)
+export default Header

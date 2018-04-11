@@ -5,7 +5,7 @@ import './../../styles/Login.css'
 import Footer from './../Footer/Footer'
 import Header from './../Header/Header'
 import { login } from './../../actions/userActions'
-import { isUserAuthenticated, getBasketFromToken } from './../../utils/auth'
+import { isUserAuthenticated } from './../../utils/auth'
 
 class Login extends Component {
   constructor(props) {
@@ -42,13 +42,11 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state
-    const { loginFailed } = this.props
+    const { loginFailed, isFetching } = this.props
 
     if (isUserAuthenticated()) {
-      const basket = getBasketFromToken()
-      const loginRedirectURL = '/basket/' + basket
       return (
-        <Redirect to={loginRedirectURL} />
+        <Redirect to={'/basket/'} />
       )
     }
 
@@ -69,6 +67,11 @@ class Login extends Component {
                   <label>Password</label>
                   <input name='password' value={password} type="password" onChange={this.handlePasswordChange}/>
                 </div>
+
+                {isFetching ? (
+                <div>
+                  Is fetching
+                </div>) : null}
 
                 { loginFailed ?
                 (<div>
@@ -100,7 +103,8 @@ class Login extends Component {
 
 function mapStateToProps(state) {
   return {
-    loginFailed: state.user.loginFailed
+    loginFailed: state.user.loginFailed,
+    isFetching: state.user.isFetching
   }
 }
 
