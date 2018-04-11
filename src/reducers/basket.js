@@ -45,6 +45,7 @@ export default function basket (state = { isFetching: false, items: [] }, action
         })
       }
     case ADD_ITEM:
+      action.newItem.id = state.items.length++
       return {
         ...state,
         items: state.items.concat(action.newItem)

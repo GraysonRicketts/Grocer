@@ -5,10 +5,6 @@ class Search extends React.Component {
     super(props)
 
     this.handleEnterPressed = this.handleEnterPressed.bind(this)
-    
-    this.state = {
-      numberOfItemsAdded: 0
-    }
   }
 
   handleEnterPressed(event) {
@@ -19,16 +15,10 @@ class Search extends React.Component {
 
     const { addItemToBasket } = this.props
 
-    const id = this.state.numberOfItemsAdded + 1000
     const newItem = {
-      id,
       name: newItemName,
-      category: 'Uncategorized',
       checkedOff: false
     }
-    this.setState((prevState) => ({
-      numberOfItemsAdded: prevState.numberOfItemsAdded + 1
-    }))
 
     addItemToBasket(newItem)
 
