@@ -8,15 +8,27 @@ class Search extends React.Component {
   }
 
   handleEnterPressed(event) {
-    const newItemName = event.target.value
-    if (event.key !== 'Enter' && newItemName !== null) {
+    let text = event.target.value.trim()
+    if (event.key !== 'Enter' && text !== null) {
       return
+    }
+
+    // Gets number from front of string
+    let number = null
+    const splitText = text.split(' ')
+    if (isNumeric(splitText[0])) {
+      if (splitText.length < 2) {
+        return
+      }
+      number = Number(splitText[0])
+      text = ''.concat(splitText.slice(1))
     }
 
     const { addItemToBasket } = this.props
 
     const newItem = {
-      name: newItemName,
+      number,
+      name: text,
       checkedOff: false
     }
 
@@ -28,10 +40,14 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search">
-        <input type="text" placeholder={"Add an item"} onKeyPress={this.handleEnterPressed}/>
+        <input type="text" placeholder={'Add an item (e.g. "7 apples")'} onKeyPress={this.handleEnterPressed}/>
       </div>
     );
   }
+}
+
+function isNumeric(num) {
+  return !isNaN(parseFloat(num)) && isFinite(num)
 }
 
 export default Search;
