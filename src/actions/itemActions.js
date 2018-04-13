@@ -17,11 +17,12 @@ function getItemsFromBasketResponse(json) {
     return null
   }
 
-  const items = json.items.map((item) => {
-  const { _id, number, size, note } = item
+  const items = json.items.map((item, index) => {
+    const { _id, number, size, note } = item
 
     return {
       _id,
+      id: index,
       name: item.itemDef.name,
       category: item.itemDef.category,
       number,
@@ -104,7 +105,7 @@ export function saveItemIfNeeded(id, update) {
 
     const payload = {
       delta: {
-        modItems: [ updatedItem ]
+        modItems: updatedItem
       }
     }
 
@@ -136,15 +137,15 @@ export function addItemToBasket(newItem) {
   return (dispatch) => {
     const payload = {
       delta: {
-        newItems: [ newItem ]
+        newItem
       }
     }
     
     return fetchAPI('POST', payload)
       .then(json => {
-        const { success } = json
+        const { success, newItem } = json
 
-        if (!success) {
+        if (!success || !newItem) {
           throw new Error('failed to add to basket')
         }
 

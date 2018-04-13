@@ -24,7 +24,7 @@ class GroceryList extends Component {
   
   componentDidMount() {
     const { fetchItemsIfNeeded } = this.props
-    const { basket }  = this.state
+    const { basket } = this.state
 
     this.setState((prevState) => {
       return {
@@ -116,19 +116,17 @@ class GroceryList extends Component {
 const getCategories = (items) => {
   let categories = {}
   let categoryId = 0
-  let itemId = 0
 
   if (items.length > 0) {
     items.forEach((item) => {
       const categoryName = item.category
-      item.id = itemId++
 
       if (!categories[categoryName]) {
         categories[item.category] = { id: categoryId++, items: []}
       }
 
-      categories[categoryName].items.push(item);
-    });
+      categories[categoryName].items.push(item.id)
+    })
   }
 
   return categories

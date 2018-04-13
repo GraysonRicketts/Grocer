@@ -13,13 +13,11 @@ export default class Category extends Component {
         </h3>
 
         {
-          items ? items.sort((item) =>{
-            return item.checkedOff ? 1 : 0
-          }).map((item) => {
+          items ? items.map((id) => {
             return (
-              <Item 
-                key={item.id}
-                id={item.id}
+              <Item
+                key={id}
+                id={id}
               />
             )
           }) : null

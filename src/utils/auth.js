@@ -21,8 +21,8 @@ export function isUserAuthenticated() {
 
   const token = getToken()
   const decodedToken = jwt.decode(token)
-  const timeNow = new Date().getTime()
-  if (decodedToken.exp > timeNow) {
+  const timeNow = new Date().getTime() / 1000
+  if (decodedToken.exp < timeNow) {
     deauthenticateUser()
     return false
   }
