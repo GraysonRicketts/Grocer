@@ -51,7 +51,8 @@ export default function basket (state = { isFetching: false, items: [] }, action
         name: action.newItem.itemDef.name,
         category: action.newItem.itemDef.category,
         number: action.newItem.number,
-        size: action.newItem.size
+        size: action.newItem.size,
+        checkedOff: action.newItem.checkedOff
       }
 
       state.items.push(newItem)

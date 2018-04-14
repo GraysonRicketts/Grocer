@@ -82,9 +82,29 @@ export function signup(email, password) {
   return dispatch => {
     dispatch(requestSignup(email, password))
 
-    return setTimeout(() => {
-      dispatch(receiveSignup(email, true, null, null))
-    }, 1000)
+    const url = '/auth/signup'
+    const payload = { email, password }
+
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json"
+        },
+      })
+      .then(response => response.json())
+      .then(json => {
+        const { success, token, baskets } = json
+
+        if (!success) {
+          throw new Error('failed to signup')
+        }
+
+        dispatch(receiveSignup(email, success, token, baskets))
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }
 }
 

@@ -18,7 +18,7 @@ function getItemsFromBasketResponse(json) {
   }
 
   const items = json.items.map((item, index) => {
-    const { _id, number, size, note } = item
+    const { _id, number, size, note, checkedOff } = item
 
     return {
       _id,
@@ -27,7 +27,8 @@ function getItemsFromBasketResponse(json) {
       category: item.itemDef.category,
       number,
       size,
-      note
+      note,
+      checkedOff
     }
   })
 
@@ -196,6 +197,34 @@ Toggle
 */
 
 export function toggleItem(id) {
+  return (dispatch, getState) => {
+    dispatch(toggleCheckedOff(id))
+
+    const state = getState()
+    const modifiedItem = {
+      _id: state.basket.items[id]._id,
+      checkedOff: state.basket.items[id].checkedOff
+    }
+
+    const payload = {
+      delta: {
+        modItems: [ modifiedItem ]
+      }
+    }
+
+    return fetchAPI('PUT', payload)
+      .then(json => {
+        const { success } = json
+
+        if (!success) {
+          throw new Error('failed to toggle item')
+        }
+      })
+  }
+  
+}
+
+function toggleCheckedOff(id) {
   return { type: TOGGLE_ITEM, id }
 }
 

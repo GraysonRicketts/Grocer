@@ -119,12 +119,14 @@ const getCategories = (items) => {
 
   if (items.length > 0) {
     items.forEach((item) => {
-      const categoryName = item.category
+      if (!item) {
+        return
+      }
 
+      const categoryName = item.category
       if (!categories[categoryName]) {
         categories[item.category] = { id: categoryId++, items: []}
       }
-
       categories[categoryName].items.push(item.id)
     })
   }
