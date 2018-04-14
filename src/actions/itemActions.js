@@ -106,7 +106,7 @@ export function saveItemIfNeeded(id, update) {
 
     const payload = {
       delta: {
-        modItems: updatedItem
+        modItems: [ updatedItem ]
       }
     }
 
