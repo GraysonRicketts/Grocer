@@ -58,11 +58,9 @@ export default function basket (state = { isFetching: false, items: [] }, action
       state.items.push(newItem)
       return { ...state }
     case DELETE_ITEM:
+      state.items[action.id] = undefined
       return {
-        ...state,
-        items: state.items.filter((item) => {
-          return item.id !== action.id
-        })
+        ...state
       }
     default:
       return state
