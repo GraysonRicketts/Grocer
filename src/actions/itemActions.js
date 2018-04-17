@@ -18,13 +18,16 @@ function getItemsFromBasketResponse(json) {
   }
 
   const items = json.items.map((item, index) => {
-    const { _id, number, size, note, checkedOff } = item
+    const { _id, itemDef, number, size, note, checkedOff } = item
+
+    if (!item.itemDef) {
+      return undefined
+    }
 
     return {
       _id,
       id: index,
-      name: item.itemDef.name,
-      category: item.itemDef.category,
+      itemDef,
       number,
       size,
       note,

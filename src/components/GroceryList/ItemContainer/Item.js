@@ -40,7 +40,8 @@ class Item extends Component {
   }
 
   render() {
-    const { name, number, size, note, category, checkedOff } = this.props.item
+    const { itemDef, number, size, note, checkedOff } = this.props.item
+    const { name, category } = itemDef
     const { id } = this.props
     const checkedStyle = checkedOff ? null : 'hidden'
 

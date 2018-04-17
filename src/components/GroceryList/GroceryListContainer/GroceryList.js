@@ -123,10 +123,10 @@ const getCategories = (items) => {
         return
       }
 
-      const categoryName = item.category
+      const categoryName = item.itemDef.category
       if (!categories[categoryName]) {
         // Creates category if non already exists
-        categories[item.category] = { id: categoryId++, items: []}
+        categories[item.itemDef.category] = { id: categoryId++, items: []}
       }
       categories[categoryName].items.push(item.id)
     })

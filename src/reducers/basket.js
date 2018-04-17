@@ -25,7 +25,7 @@ export default function basket (state = { isFetching: false, items: [] }, action
       return {
         ...state,
         items: state.items.map((item) => {
-          if (item.id === action.id) {
+          if (item && item.id === action.id) {
             return {...item, checkedOff: !item.checkedOff}
           }
 
@@ -36,8 +36,19 @@ export default function basket (state = { isFetching: false, items: [] }, action
       return {
         ...state,
         items: state.items.map((item) => {
-          if (item.id === action.id) {
+          if (item && item.id === action.id) {
             const update = action.update
+
+            if (update.name || update.category) {
+              update.itemDef = update.name ? {
+                category: item.itemDef.category,
+                name: update.name
+              } : {
+                name: item.itemDef.name,
+                category: update.category 
+              }
+            }
+
             return {...item, ...update}
           }
 
@@ -45,23 +56,11 @@ export default function basket (state = { isFetching: false, items: [] }, action
         })
       }
     case ADD_ITEM:
-      const newItem = {
-        _id: action.newItem._id,
-        id: state.items.length,
-        name: action.newItem.itemDef.name,
-        category: action.newItem.itemDef.category,
-        number: action.newItem.number,
-        size: action.newItem.size,
-        checkedOff: action.newItem.checkedOff
-      }
-
-      state.items.push(newItem)
+      state.items.push(action.item)
       return { ...state }
     case DELETE_ITEM:
       state.items[action.id] = undefined
-      return {
-        ...state
-      }
+      return { ...state }
     default:
       return state
   }

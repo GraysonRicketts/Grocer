@@ -26,8 +26,17 @@ export default class ItemEditor extends Component {
 
   handleSaveClicked(event) {
     const { closeEditor, saveItem, id, name, number, size, category, note } = this.props
+    const updatedItem = {
+      itemDef: {
+        name,
+        category
+      },
+      number,
+      size,
+      note
+    }
 
-    saveItem(id, {name, number, size, category, note})
+    saveItem(id, updatedItem)
     closeEditor()
   }
 
