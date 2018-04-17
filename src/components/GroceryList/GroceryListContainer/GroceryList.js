@@ -125,6 +125,7 @@ const getCategories = (items) => {
 
       const categoryName = item.category
       if (!categories[categoryName]) {
+        // Creates category if non already exists
         categories[item.category] = { id: categoryId++, items: []}
       }
       categories[categoryName].items.push(item.id)
