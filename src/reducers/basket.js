@@ -39,13 +39,16 @@ export default function basket (state = { isFetching: false, items: [] }, action
           if (item && item.id === action.id) {
             const update = action.update
 
-            if (update.name || update.category) {
-              update.itemDef = update.name ? {
+            if (update.name === '' || update.name) {
+              update.itemDef = {
                 category: item.itemDef.category,
                 name: update.name
-              } : {
+              }
+            }
+            else if(update.category) {
+              update.itemDef = {
                 name: item.itemDef.name,
-                category: update.category 
+                category: update.category
               }
             }
 
