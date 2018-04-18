@@ -74,6 +74,12 @@ class GroceryList extends Component {
       borderRadius: '2px'
     }
 
+    const helpTextStyle = {
+      fontWeight: 300,
+      textAlign: 'center',
+      margin: '30% 10%'
+    }
+
     return (
       <div>
         {Object.keys(categories).sort().map((name) => {
@@ -93,7 +99,11 @@ class GroceryList extends Component {
           )
         })}
 
-        {}
+        {this.props.numItems < 4 ?
+          <p style={helpTextStyle}>
+            You can modify items by clicking on them.
+          </p> : null
+        }
 
         <div style={{
               position: 'absolute',
@@ -158,7 +168,8 @@ const getCategories = (items) => {
 
 function mapStateToProps(state) {
   return {
-    categories: getCategories(state.basket.items)
+    categories: getCategories(state.basket.items),
+    numItems: state.basket.items.length
   }
 }
 
