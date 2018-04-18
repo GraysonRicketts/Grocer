@@ -109,7 +109,18 @@ class GroceryList extends Component {
   }
 
   showBlankBasket() {
-    return null
+    const style = {
+      fontWeight: 300,
+      textAlign: 'center',
+      margin: '30% 10%'
+    }
+
+    return (
+      <p style={style}>
+        Type in an item on grocery list above and 
+        press enter to add it. For example, "3 apples" or "4 chicken breasts."
+      </p>
+    )
   }
 }
 
