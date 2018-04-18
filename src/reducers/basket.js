@@ -56,7 +56,11 @@ export default function basket (state = { isFetching: false, items: [] }, action
         })
       }
     case ADD_ITEM:
-      state.items.push(action.item)
+      const newItem = {
+        ...action.newItem,
+        id: state.items.length
+      }
+      state.items.push(newItem)
       return { ...state }
     case DELETE_ITEM:
       state.items[action.id] = undefined
