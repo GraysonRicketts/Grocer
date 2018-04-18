@@ -134,7 +134,7 @@ class GroceryList extends Component {
           press "Enter" to add it.
         </p>
         <p>
-          "3 apples"
+          "salmon"
         </p>
         <p>
           "4 chicken breasts"
