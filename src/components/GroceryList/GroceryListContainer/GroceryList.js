@@ -93,6 +93,8 @@ class GroceryList extends Component {
           )
         })}
 
+        {}
+
         <div style={{
               position: 'absolute',
               bottom: 35,
@@ -116,10 +118,18 @@ class GroceryList extends Component {
     }
 
     return (
-      <p style={style}>
-        Type in an item on grocery list above and 
-        press enter to add it. For example, "3 apples" or "4 chicken breasts."
-      </p>
+      <div style={style}>
+        <p>
+          Type in an item on grocery list above and 
+          press "Enter" to add it.
+        </p>
+        <p>
+          "3 apples"
+        </p>
+        <p>
+          "4 chicken breasts"
+        </p>
+      </div>
     )
   }
 }
