@@ -6,6 +6,22 @@ export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
 export const REQUEST_SIGNUP = 'REQUEST_SIGNUP'
 export const RECEIVE_SIGNUP = 'RECEIVE_SIGNUP'
 export const REQUEST_LOGOUT = 'REQUEST_LOGOUT'
+export const TOGGLE_SHOW_CHECKED_OFF = 'TOGGLE_SHOW_CHECKED_OFF'
+
+/*
+Toggle showCheckedOff
+*/
+function toggle() {
+  return {
+    type: TOGGLE_SHOW_CHECKED_OFF
+  }
+}
+
+export function toggleShowCheckedOff() {
+  return dispatch => {
+    dispatch(toggle())
+  }
+} 
 
 /*
 Login

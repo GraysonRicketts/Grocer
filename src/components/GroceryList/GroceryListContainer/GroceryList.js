@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { fetchItemsIfNeeded, addItemToBasket } from '../../../actions/itemActions'
+import { fetchItemsIfNeeded, addItemToBasket } from './../../../actions/itemActions'
+import { toggleShowCheckedOff } from './../../../actions/userActions'
 import Search from './../Search/Search'
 import Category from './../Category/Category'
-import Header from '../../Header/Header'
-import Footer from '../../Footer/Footer'
-import { getBasketFromToken } from '../../../utils/auth'
+import Header from './../../Header/Header'
+import Footer from './../../Footer/Footer'
+import { getBasketFromToken } from './../../../utils/auth'
 import { isUserAuthenticated } from './../../../utils/auth'
 
 class GroceryList extends Component {
@@ -14,12 +15,9 @@ class GroceryList extends Component {
     super(props)
 
     this.state = {
-      showChecked: true,
       basket: getBasketFromToken(),
       requestFulfilled: true
     }
-
-    this.handleShowCheckedToggle = this.handleShowCheckedToggle.bind(this)
   }
   
   componentDidMount() {
@@ -30,15 +28,6 @@ class GroceryList extends Component {
       return {
         ...prevState,
         requestFulfilled: fetchItemsIfNeeded(basket)
-      }
-    })
-  }
-
-  handleShowCheckedToggle() {
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        showChecked: !prevState.showChecked
       }
     })
   }
@@ -83,14 +72,9 @@ class GroceryList extends Component {
     return (
       <div>
         {Object.keys(categories).sort().map((name) => {
-          let categoryItems = categories[name].items
-          if (!this.state.showChecked) {
-            categoryItems = categoryItems.filter((item) => {
-              return !item.checkedOff
-            })
-          }
+          const categoryItems = categories[name].items
 
-          return categoryItems.length === 0 ? null : (
+          return (
             <Category
               key={categories[name].id}
               name={name}
@@ -112,8 +96,8 @@ class GroceryList extends Component {
               left: 0, right: 0
             }}>
           <input type='button' name="showChecked" 
-          onClick={this.handleShowCheckedToggle}
-          value={(this.state.showChecked ? 'Hide' : 'Show') + ' checked items'}
+          onClick={this.props.toggleShowCheckedOff}
+          value={(this.props.showCheckedOff ? 'Hide' : 'Show') + ' checked items'}
           style={buttonStyle}/>
         </div>
       </div>
@@ -144,13 +128,25 @@ class GroceryList extends Component {
   }
 }
 
-const getCategories = (items) => {
+function mapStateToProps(state) {
+  return {
+    categories: getCategories(state.basket.items, state.user.showCheckedOff),
+    numItems: state.basket.items.length,
+    showCheckedOff: state.user.showCheckedOff
+  }
+}
+
+function getCategories(items, showCheckedOff) {
   let categories = {}
   let categoryId = 0
 
   if (items.length > 0) {
     items.forEach((item) => {
       if (!item) {
+        return
+      }
+
+      if (!showCheckedOff && item.checkedOff) {
         return
       }
 
@@ -166,16 +162,10 @@ const getCategories = (items) => {
   return categories
 }
 
-function mapStateToProps(state) {
-  return {
-    categories: getCategories(state.basket.items),
-    numItems: state.basket.items.length
-  }
-}
-
 const mapDispathToProps = {
   fetchItemsIfNeeded,
-  addItemToBasket
+  addItemToBasket,
+  toggleShowCheckedOff
 }
 
 export default connect(

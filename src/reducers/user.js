@@ -3,10 +3,15 @@ import {
   RECEIVE_LOGIN,
   REQUEST_SIGNUP,
   RECEIVE_SIGNUP,
-  REQUEST_LOGOUT
+  REQUEST_LOGOUT,
+  TOGGLE_SHOW_CHECKED_OFF
 } from '../actions/userActions'
 
-export default function user(state = { isFetching: false, email: null, loginFailed: false}, action) {
+export default function user(state = {
+    isFetching: false, email: null,
+    loginFailed: false,
+    showCheckedOff: true
+  }, action) {
   switch(action.type) {
     case REQUEST_LOGIN:
       return {
@@ -38,6 +43,11 @@ export default function user(state = { isFetching: false, email: null, loginFail
         ...state,
         email: null,
         isLoggedIn: false
+      }
+    case TOGGLE_SHOW_CHECKED_OFF:
+      return {
+        ...state,
+        showCheckedOff: !state.showCheckedOff
       }
     default:
       return state
