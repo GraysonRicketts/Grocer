@@ -1,0 +1,38 @@
+version: "3.3"
+
+services:
+  grocery-app:
+    image: grocery-app
+    container_name: "api-dev"
+    environment:
+      - NODE_ENV=development
+      - MONGODB_PORT=27017
+      - MONGODB_NAME=grocery-app
+      - APP_PORT=3002
+    ports:
+      - "3002:3002"
+      - "5858:5858"
+    volumes:
+      - ./server:/server
+      - ./node_modules:/node_modules
+      - ./wait-for:/wait-for
+    command: npm start
+  mongodb:
+    image: mongo:latest
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    ports:
+      - "27017:27017"
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379"
+  seeder:
+    image: seeder
+    build:
+      context: ./seeds
+      dockerfile: Dockerfile
+    depends_on:
+      - mongodb
+    command: sh -c './seed-db.sh'

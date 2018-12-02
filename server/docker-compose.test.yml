@@ -1,0 +1,37 @@
+version: "3.3"
+
+services:
+  grocery-app-tests:
+    image: grocery-tests
+    build: 
+      context: .
+      dockerfile: test/Dockerfile
+    volumes:
+      - ./server:/server
+      - ./test:/test
+      - /node_modules
+    environment:
+      - NODE_ENV=test
+      - MONGODB_PORT=27017
+      - MONGODB_NAME=test-grocery
+      - APP_PORT=3600
+    ports:
+      - '6767:6767'
+    depends_on:
+      - mongodb
+      - redis
+    command: ["./wait-for-it.sh", "mongodb:27017", "--", "./wait-for-it.sh", "redis:6379", "--", "npm", "run", "test"]
+  mongodb:
+    image: mongo:latest
+    container_name: 'mongodb'
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    ports:
+      - "27017:27017"
+    command: ["mongod", "--quiet", "--bind_ip_all"]
+  redis:
+    image: redis:alpine
+    container_name: "redis"
+    ports:
+      - "6379:6379"

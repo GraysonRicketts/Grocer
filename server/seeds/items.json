@@ -1,0 +1,24 @@
+{
+    "name": "apple",
+    "category": "Produce",
+    "note": "lookin' good"
+} {
+    "name": "2% milk",
+    "category": "Dairy"
+} {
+    "name": "porterhouse steak",
+    "category": "Meat"
+} {
+    "name": "salmon",
+    "category": "Seafood",
+    "note": "the best ** Trump voice **"
+} {
+    "name": "peas",
+    "category": "Frozen"
+} {
+    "name": "absolut vodka",
+    "category": "Beer/wine/liquor"
+} {
+    "name": "pasta",
+    "category": "Dry Goods / Pantry"
+}
