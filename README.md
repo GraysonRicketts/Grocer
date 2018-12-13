@@ -5,7 +5,7 @@
 - [Context and history](#context-and-history)
    - [The Problem](#the-problem)
    - [Needs / opportunity / goal](#needs--opportunity--goal)
-   - [History](#history)auto
+   - [History](#history)
 - [Post-mortem](#post-mortem)
     - [Technologies used](#technologies-used)
     - [What went well](#what-went-well)
