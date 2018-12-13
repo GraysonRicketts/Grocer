@@ -3,23 +3,23 @@
 
 # Table of contents
 - [Context and history](#context-and-history)
-   - [The Problem](#the-problem)auto    
+   - [The Problem](#the-problem)
    - [Needs / opportunity / goal](#needs--opportunity--goal)
    - [History](#history)auto
-- [Post-mortem](#post-mortem)auto    
-    - [Technologies used](#technologies-used)auto    
-    - [What went well](#what-went-well)auto        
-        - [Work ethic](#work-ethic)auto        
-        - [Feedback / user experience](#feedback--user-experience)auto        
-        - [Technologies](#technologies)auto    
-    - [What did not go well](#what-did-not-go-well)auto        
-        - [Development order](#development-order)auto        
-        - [Testing](#testing)auto        
-        - [Early focus on scalability](#early-focus-on-scalability)auto        
-        - [Microservices](#microservices)auto    
-    - [Why I stopped the project](#why-i-stopped-the-project)auto    
-    - [What I learned](#what-i-learned)auto    
-    - [Areas to improve in](#areas-to-improve-in)autoauto
+- [Post-mortem](#post-mortem)
+    - [Technologies used](#technologies-used)
+    - [What went well](#what-went-well)
+        - [Work ethic](#work-ethic)
+        - [Feedback / user experience](#feedback--user-experience)
+        - [Technologies](#technologies)
+    - [What did not go well](#what-did-not-go-well)
+        - [Development order](#development-order)
+        - [Testing](#testing)
+        - [Early focus on scalability](#early-focus-on-scalability)
+        - [Microservices](#microservices)
+    - [Why I stopped the project](#why-i-stopped-the-project)
+    - [What I learned](#what-i-learned)
+    - [Areas to improve in](#areas-to-improve-in)
 
 # Context and history
 ## The Problem
